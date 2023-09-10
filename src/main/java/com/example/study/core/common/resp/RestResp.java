@@ -1,6 +1,7 @@
 package com.example.study.core.common.resp;
 
 import com.example.study.core.common.constant.ErrorCodeEnum;
+import lombok.Getter;
 
 import java.util.Objects;
 
@@ -10,6 +11,7 @@ import java.util.Objects;
  * @Author YouZhi
  * @Date 2023 - 09 - 10 - 16:31
  */
+@Getter
 public class RestResp<T> {
 
     private String code;
