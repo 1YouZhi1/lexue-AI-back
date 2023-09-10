@@ -39,7 +39,7 @@ public class JwtUtils {
      * @param systemKey  系统标识
      * @return JWT
      */
-    public String generateToken(Integer id, String systemKey){
+    public String generateToken(Long id, String systemKey){
         return Jwts.builder()
                 .setHeaderParam(HEADER_SYSTEM_KEY, systemKey)
                 .setSubject(id.toString())
@@ -53,7 +53,7 @@ public class JwtUtils {
      * @param systemKey 系统标识
      * @return 用户ID
      */
-    public Integer parseToken(String token, String systemKey){
+    public Long parseToken(String token, String systemKey){
         Jws<Claims> claimsJws;
         try {
             claimsJws = Jwts.parserBuilder()
@@ -61,7 +61,7 @@ public class JwtUtils {
                     .build()
                     .parseClaimsJws(token);
             if(Objects.equals(claimsJws.getHeader().get(HEADER_SYSTEM_KEY), systemKey)){
-                return Integer.parseInt(claimsJws.getBody().getSubject());
+                return Long.parseLong(claimsJws.getBody().getSubject());
             }
         }catch (JwtException e){
             log.warn("JWT解析失败: { }", token);
