@@ -3,7 +3,9 @@ package com.example.study.controller.front;
 import com.example.study.core.common.resp.RestResp;
 import com.example.study.core.constant.ApiRouterConsts;
 import com.example.study.dto.req.UserLoginReqDto;
+import com.example.study.dto.req.UserRegisterReqDto;
 import com.example.study.dto.resp.UserLoginRespDto;
+import com.example.study.dto.resp.UserRegisterRespDto;
 import com.example.study.service.UserService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -26,9 +28,15 @@ public class UserController {
     @NonNull
     private UserService userService;
 
+    @PostMapping("register")
+    public RestResp<UserRegisterRespDto> register (@RequestBody UserRegisterReqDto dto) {
+        return userService.register(dto);
+    }
+
     @PostMapping("login")
     public RestResp<UserLoginRespDto> login (@RequestBody UserLoginReqDto dto) {
         return userService.login(dto);
     }
+
 
 }

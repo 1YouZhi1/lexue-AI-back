@@ -10,7 +10,9 @@ import com.example.study.core.utils.JwtUtils;
 import com.example.study.dao.entity.UserInfo;
 import com.example.study.dao.mapper.UserInfoMapper;
 import com.example.study.dto.req.UserLoginReqDto;
+import com.example.study.dto.req.UserRegisterReqDto;
 import com.example.study.dto.resp.UserLoginRespDto;
+import com.example.study.dto.resp.UserRegisterRespDto;
 import com.example.study.service.UserService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.DigestUtils;
 
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -35,6 +38,32 @@ public class UserServiceImpl implements UserService {
 
     @NonNull
     private JwtUtils jwtUtils;
+
+    @Override
+    public RestResp<UserRegisterRespDto> register(UserRegisterReqDto dto) {
+
+        QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq(DatabaseConsts.UserInfoTable.COLUMN_USERNAME, dto.getUsername())
+                .last(DatabaseConsts.SqlEnum.LIMIT_1.getSql());
+        if (userInfoMapper.selectCount(queryWrapper) > 0) {
+            throw new BusinessException(ErrorCodeEnum.USER_NAME_EXIST);
+        }
+
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUsername(dto.getUsername());
+        userInfo.setPassword(DigestUtils.md5DigestAsHex(dto.getPassword().getBytes(StandardCharsets.UTF_8)));
+        userInfo.setCreateTime(LocalDateTime.now());
+        userInfo.setUpdateTime(LocalDateTime.now());
+        userInfo.setSalt("0");
+        userInfoMapper.insert(userInfo);
+
+        return RestResp.ok(
+                UserRegisterRespDto.builder()
+                        .token(jwtUtils.generateToken(userInfo.getId(), SystemConfigConsts.NOVEL_FRONT_KEY))
+                        .uid(userInfo.getId())
+                        .build()
+        );
+    }
 
     @Override
     public RestResp<UserLoginRespDto> login(UserLoginReqDto dto) {
