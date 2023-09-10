@@ -13,7 +13,7 @@ import lombok.Data;
 @Builder
 public class UserRegisterRespDto {
 
-    private String id;
+    private Long uid;
 
     private String token;
 
