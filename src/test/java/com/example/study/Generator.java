@@ -3,6 +3,7 @@ package com.example.study;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.baomidou.mybatisplus.generator.config.TemplateType;
+import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,7 +15,7 @@ import java.util.Collections;
  * @Date 2023 - 09 - 10 - 15:32
  */
 public class Generator {
-    private static final String USERNAME = System.getenv().get("USER");
+    private static final String USERNAME = "YouZhi";
 
     /**
      * 项目信息
