@@ -8,6 +8,7 @@ import com.example.study.service.UserService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +27,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("login")
-    public RestResp<UserLoginRespDto> login (UserLoginReqDto dto) {
+    public RestResp<UserLoginRespDto> login (@RequestBody UserLoginReqDto dto) {
         return userService.login(dto);
     }
 

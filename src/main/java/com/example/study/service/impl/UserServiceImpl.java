@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
     public RestResp<UserLoginRespDto> login(UserLoginReqDto dto) {
 
         QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
-        queryWrapper.select(DatabaseConsts.UserInfoTable.COLUMN_USERNAME, dto.getUsername())
+        queryWrapper.eq(DatabaseConsts.UserInfoTable.COLUMN_USERNAME, dto.getUsername())
                 .last(DatabaseConsts.SqlEnum.LIMIT_1.getSql());
         UserInfo userInfo = userInfoMapper.selectOne(queryWrapper);
 
