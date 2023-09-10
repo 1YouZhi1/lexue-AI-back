@@ -13,8 +13,15 @@ public class SystemConfigConsts {
     }
 
     /**
+     * 前台门户系统标识
+     */
+    public static final String NOVEL_FRONT_KEY = "front";
+
+    /**
      * 常量类实例化
      */
     public static final String CONST_INSTANCE_EXCEPTION_MSG = "Constant class";
+
+
 
 }
