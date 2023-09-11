@@ -11,6 +11,7 @@ import com.example.study.dao.entity.UserInfo;
 import com.example.study.dao.mapper.UserInfoMapper;
 import com.example.study.dto.req.UserLoginReqDto;
 import com.example.study.dto.req.UserRegisterReqDto;
+import com.example.study.dto.resp.UserInfoRespDto;
 import com.example.study.dto.resp.UserLoginRespDto;
 import com.example.study.dto.resp.UserRegisterRespDto;
 import com.example.study.service.UserService;
@@ -85,12 +86,23 @@ public class UserServiceImpl implements UserService {
             throw new BusinessException(ErrorCodeEnum.USER_PASSWORD_ERROR);
         }
 
-
         return RestResp.ok(
                 UserLoginRespDto.builder()
                         .uid(userInfo.getId())
                         .nickName(userInfo.getNickName())
                         .token(jwtUtils.generateToken(userInfo.getId(), SystemConfigConsts.NOVEL_FRONT_KEY))
+                        .build()
+        );
+    }
+
+    @Override
+    public RestResp<UserInfoRespDto> getUserInfo(Long id) {
+        UserInfo userInfo = userInfoMapper.selectById(id);
+        return RestResp.ok(
+                UserInfoRespDto.builder()
+                        .nickName(userInfo.getNickName())
+                        .userSex(userInfo.getUserSex())
+                        .userPhoto(userInfo.getUserPhoto())
                         .build()
         );
     }

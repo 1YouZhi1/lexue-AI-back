@@ -4,6 +4,7 @@ import com.example.study.core.constant.CacheConsts;
 import com.example.study.dao.entity.UserInfo;
 import com.example.study.dao.mapper.UserInfoMapper;
 import com.example.study.dto.UserInfoDto;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
@@ -20,6 +21,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class UserInfoCacheManager {
 
+    @NonNull
     private final UserInfoMapper userInfoMapper;
 
     @Cacheable(cacheManager = CacheConsts.REDIS_CACHE_MANAGER, value = CacheConsts.USER_INFO_CACHE_NAME)
