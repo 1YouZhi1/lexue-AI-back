@@ -27,6 +27,9 @@ public class SystemConfigConsts {
      */
     public static final String CONST_INSTANCE_EXCEPTION_MSG = "Constant class";
 
-
+    /**
+     * 图片上传目录
+     */
+    public static final String IMAGE_UPLOAD_DIRECTORY = "/image/";
 
 }
