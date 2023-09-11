@@ -32,4 +32,19 @@ public class ApiRouterConsts {
      */
     public static final String API_FRONT_USER_URL_PREFIX = API_FRONT_URL_PREFIX + USER_URL_PREFIX;
 
+    /**
+     * 资源（图片/视频/文档）模块请求路径前缀
+     */
+    public static final String RESOURCE_URL_PREFIX = "/resource";
+
+    /**
+     * 平台后台请求路径前缀
+     */
+    public static final String API_ADMIN_URL_PREFIX = API_URL_PREFIX + "/admin";
+
+    /**
+     * 付费资源
+     */
+    public static final String API_FRONT_BUY_URL_PREFIX = API_FRONT_URL_PREFIX + RESOURCE_URL_PREFIX;
+
 }
