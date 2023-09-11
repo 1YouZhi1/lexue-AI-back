@@ -1,5 +1,6 @@
 package com.example.study.core.interceptor;
 
+import com.example.study.core.auth.UserHolder;
 import com.example.study.core.constant.SystemConfigConsts;
 import com.example.study.core.utils.JwtUtils;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,9 +29,18 @@ public class TokenParseInterceptor implements HandlerInterceptor {
         String token = request.getHeader(SystemConfigConsts.HTTP_AUH_HEADER_NAME);
 
         if (StringUtils.hasText(token)) {
-
+            //解析 token 并保存
+            UserHolder.setUserId(jwtUtils.parseToken(token, SystemConfigConsts.NOVEL_FRONT_KEY));
+            System.out.println(UserHolder.getUserId());
         }
 
         return HandlerInterceptor.super.preHandle(request, response, handler);
+    }
+
+    @SuppressWarnings("NullableProblems")
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        UserHolder.clear();
+        HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
     }
 }

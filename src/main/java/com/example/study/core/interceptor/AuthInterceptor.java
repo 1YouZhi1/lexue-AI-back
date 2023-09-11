@@ -56,7 +56,6 @@ public class AuthInterceptor implements HandlerInterceptor {
 
         try {
             authStrategy.get(authStrategyName).auth(token, requestUrl);
-            System.out.println("yepyep");
             return HandlerInterceptor.super.preHandle(request, response, handler);
         }catch (BusinessException exception){
             //认证失败

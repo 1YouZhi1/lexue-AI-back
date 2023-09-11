@@ -27,7 +27,6 @@ public class FileInterceptor implements HandlerInterceptor {
     @SuppressWarnings("NullableProblems")
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("file!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         // 获取请求的 URI
         String requestUri = request.getRequestURI();
         // 缓存10天
