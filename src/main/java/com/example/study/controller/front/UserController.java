@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
  * @Date 2023 - 09 - 10 - 16:03
  */
 
+@CrossOrigin
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(ApiRouterConsts.API_FRONT_USER_URL_PREFIX)
