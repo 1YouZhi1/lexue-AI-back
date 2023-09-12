@@ -30,6 +30,11 @@ public class CacheConsts {
     public static final String USER_INFO_CACHE_NAME = "userInfoCache";
 
     /**
+     * 每日五题信息缓存
+     */
+    public static final String QUESTIONS_INFO_CACHE_NAME = "questionsInfoCache";
+
+    /**
      * 最新新闻缓存
      */
     public static final String LATEST_NEWS_CACHE_NAME = "latestNewsCacheName";
@@ -40,7 +45,8 @@ public class CacheConsts {
     public enum CacheEnum {
 
         USER_INFO_CACHE(2, USER_INFO_CACHE_NAME, 60 * 60 * 24, 10000),
-        LATEST_NEWS_CACHE(0, LATEST_NEWS_CACHE_NAME, 60 * 10, 1);
+        LATEST_NEWS_CACHE(0, LATEST_NEWS_CACHE_NAME, 60 * 10, 1),
+        QUESTIONS_INFO_FIVE_CACHE(0,QUESTIONS_INFO_CACHE_NAME, 60 * 60 *24, 10000);
 
         /**
          * 缓存类型 0-本地 1-本地和远程 2-远程

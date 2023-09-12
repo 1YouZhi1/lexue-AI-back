@@ -33,6 +33,16 @@ public class ApiRouterConsts {
     public static final String NEWS_URL_PREFIX = "/news";
 
     /**
+     * 题目请求路径前缀
+     */
+    public static final String QUESTIONS_URL_PREFIX = "/questions";
+
+    /**
+     * 前台题目请求路径前缀
+     */
+    public static final String API_FRONT_QUESTIONS_URL_PREFIX = API_FRONT_URL_PREFIX + QUESTIONS_URL_PREFIX;
+
+    /**
      * 前台用户 请求前缀
      */
     public static final String API_FRONT_USER_URL_PREFIX = API_FRONT_URL_PREFIX + USER_URL_PREFIX;
