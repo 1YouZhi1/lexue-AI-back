@@ -227,7 +227,7 @@ study:
     # ???????
     allow-origins:
       - http://192.168.31.214:8080
-      - http://localhost:1024
+      - http://localhost:3307
       - http://localhost:8080
   # JWT??
   jwt:
@@ -243,7 +243,7 @@ study:
     # ??????
     upload:
       # ????
-      path: /Users/xiongxiaoyang/upload
+      path: D:\file\java\project\image
 
 
 --- #------------------- dev ????---------------------------

@@ -19,8 +19,8 @@ public class SysUser implements Serializable {
 
 private static final long serialVersionUID = 1L;
 
-                @TableId(value = "id", type = IdType.AUTO)
-                private Long id;
+        @TableId(value = "id", type = IdType.AUTO)
+        private Long id;
 
         /**
          * 用户名
@@ -160,7 +160,7 @@ private static final long serialVersionUID = 1L;
         public void setUpdateTime(LocalDateTime updateTime) {
             this.updateTime = updateTime;
             }
-    
+
 @Override
 public String toString() {
         return "SysUser{" +

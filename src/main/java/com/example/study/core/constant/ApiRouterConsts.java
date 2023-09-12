@@ -48,6 +48,11 @@ public class ApiRouterConsts {
     public static final String RESOURCE_URL_PREFIX = "/resource";
 
     /**
+     * 前台门户资源（图片/视频/文档）相关API请求路径前缀
+     */
+    public static final String API_FRONT_RESOURCE_URL_PREFIX = API_FRONT_URL_PREFIX + RESOURCE_URL_PREFIX;
+
+    /**
      * 平台后台请求路径前缀
      */
     public static final String API_ADMIN_URL_PREFIX = API_URL_PREFIX + "/admin";

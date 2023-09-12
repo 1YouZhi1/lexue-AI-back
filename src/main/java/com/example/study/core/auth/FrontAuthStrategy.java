@@ -20,7 +20,6 @@ public class FrontAuthStrategy implements AuthStrategy{
 
     private final UserInfoCacheManager userInfoCacheManager;
 
-
     @Override
     public void auth(String token, String requestUrl) throws BusinessException {
         authSSD(jwtUtils, userInfoCacheManager, token);

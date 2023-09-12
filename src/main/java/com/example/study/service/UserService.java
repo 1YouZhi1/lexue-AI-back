@@ -35,4 +35,5 @@ public interface UserService {
      * @return
      */
     RestResp<UserInfoRespDto> getUserInfo(Long id);
+
 }
