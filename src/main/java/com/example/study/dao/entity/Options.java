@@ -2,16 +2,19 @@ package com.example.study.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author YouZhi
  * @date 2023/09/12
  */
+@TableName("options")
 public class Options implements Serializable {
 
 private static final long serialVersionUID = 1L;
@@ -63,7 +66,7 @@ private static final long serialVersionUID = 1L;
         public void setIsCorrect(Boolean isCorrect) {
             this.isCorrect = isCorrect;
             }
-    
+
 @Override
 public String toString() {
         return "Options{" +
