@@ -28,9 +28,19 @@ public class ApiRouterConsts {
     public static final String API_FRONT_URL_PREFIX = API_URL_PREFIX + "/front";
 
     /**
+     * 首页新闻请求路径前缀
+     */
+    public static final String NEWS_URL_PREFIX = "/news";
+
+    /**
      * 前台用户 请求前缀
      */
     public static final String API_FRONT_USER_URL_PREFIX = API_FRONT_URL_PREFIX + USER_URL_PREFIX;
+
+    /**
+     * 前台门户新闻相关API请求路径前缀
+     */
+    public static final String API_FRONT_NEWS_URL_PREFIX = API_FRONT_URL_PREFIX + NEWS_URL_PREFIX;
 
     /**
      * 资源（图片/视频/文档）模块请求路径前缀

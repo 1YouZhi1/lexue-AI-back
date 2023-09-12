@@ -29,13 +29,18 @@ public class CacheConsts {
      */
     public static final String USER_INFO_CACHE_NAME = "userInfoCache";
 
+    /**
+     * 最新新闻缓存
+     */
+    public static final String LATEST_NEWS_CACHE_NAME = "latestNewsCacheName";
 
     /**
      * 缓存配置常量
      */
     public enum CacheEnum {
 
-        USER_INFO_CACHE(2, USER_INFO_CACHE_NAME, 60 * 60 * 24, 10000);
+        USER_INFO_CACHE(2, USER_INFO_CACHE_NAME, 60 * 60 * 24, 10000),
+        LATEST_NEWS_CACHE(0, LATEST_NEWS_CACHE_NAME, 60 * 10, 1);
 
         /**
          * 缓存类型 0-本地 1-本地和远程 2-远程

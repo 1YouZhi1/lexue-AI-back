@@ -10,12 +10,28 @@ import lombok.Getter;
  */
 public class DatabaseConsts {
 
+    /**
+     * 用户内容表
+     */
     public static class UserInfoTable{
         private UserInfoTable() {
             throw new IllegalStateException(SystemConfigConsts.CONST_INSTANCE_EXCEPTION_MSG);
         }
 
         public static final String COLUMN_USERNAME = "username";
+    }
+
+    /**
+     * 新闻内容表
+     */
+    public static class NewsContentTable {
+
+        private NewsContentTable() {
+            throw new IllegalStateException(SystemConfigConsts.CONST_INSTANCE_EXCEPTION_MSG);
+        }
+
+        public static final String COLUMN_NEWS_ID = "news_id";
+
     }
 
     /**

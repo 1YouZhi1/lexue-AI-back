@@ -55,6 +55,11 @@ private static final long serialVersionUID = 1L;
          */
         private LocalDateTime updateTime;
 
+        /**
+         * 新闻图片
+         */
+        private String categoryImage;
+
 
     public Long getId() {
             return id;
@@ -111,6 +116,14 @@ private static final long serialVersionUID = 1L;
         public void setUpdateTime(LocalDateTime updateTime) {
             this.updateTime = updateTime;
             }
+
+    public String getCategoryImage() {
+            return categoryImage;
+            }
+
+        public void setCategoryImage(String categoryImage) {
+            this.categoryImage = categoryImage;
+            }
     
 @Override
 public String toString() {
@@ -122,6 +135,7 @@ public String toString() {
                 ", title=" + title +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
+                ", categoryImage=" + categoryImage +
         "}";
         }
         }
