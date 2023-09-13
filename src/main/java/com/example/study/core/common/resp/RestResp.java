@@ -3,6 +3,7 @@ package com.example.study.core.common.resp;
 import com.example.study.core.common.constant.ErrorCodeEnum;
 import lombok.Getter;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Objects;
  * @Date 2023 - 09 - 10 - 16:31
  */
 @Getter
-public class RestResp<T> {
+public class RestResp<T> implements Serializable {
 
     private String code;
 

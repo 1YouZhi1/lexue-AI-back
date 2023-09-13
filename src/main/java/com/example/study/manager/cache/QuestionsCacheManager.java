@@ -34,7 +34,7 @@ public class QuestionsCacheManager {
      * 获取五个题目,并放入缓存中
      * @return
      */
-    @Cacheable(cacheManager = CacheConsts.CAFFEINE_CACHE_MANAGER, value = CacheConsts.QUESTIONS_INFO_CACHE_NAME)
+    @Cacheable(cacheManager = CacheConsts.REDIS_CACHE_MANAGER, value = CacheConsts.QUESTIONS_INFO_CACHE_NAME)
     public List<QuestionsRespDto> fiveQuestions() {
         QueryWrapper<Questions> queryWrapper = new QueryWrapper<>();
         queryWrapper.select("*")

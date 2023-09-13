@@ -3,6 +3,7 @@ package com.example.study.dto.resp;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @Builder
-public class NewsInfoRespDto {
+public class NewsInfoRespDto implements Serializable {
 
     /**
      * 新闻id

@@ -2,17 +2,20 @@ package com.example.study.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author YouZhi
  * @date 2023/09/13
  */
+@TableName("posts")
 public class Posts implements Serializable {
 
 private static final long serialVersionUID = 1L;
@@ -32,11 +35,6 @@ private static final long serialVersionUID = 1L;
          * 帖子标题
          */
         private String title;
-
-        /**
-         * 内容
-         */
-        private String content;
 
         /**
          * 发帖时间
@@ -78,14 +76,6 @@ private static final long serialVersionUID = 1L;
             this.title = title;
             }
 
-    public String getContent() {
-            return content;
-            }
-
-        public void setContent(String content) {
-            this.content = content;
-            }
-
     public LocalDateTime getTimestamp() {
             return timestamp;
             }
@@ -109,14 +99,13 @@ private static final long serialVersionUID = 1L;
         public void setComments(Long comments) {
             this.comments = comments;
             }
-    
+
 @Override
 public String toString() {
         return "Posts{" +
                 "postId=" + postId +
                 ", userId=" + userId +
                 ", title=" + title +
-                ", content=" + content +
                 ", timestamp=" + timestamp +
                 ", likes=" + likes +
                 ", comments=" + comments +

@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author YouZhi
@@ -34,6 +34,11 @@ private static final long serialVersionUID = 1L;
          */
         private String imageUrl;
 
+    /**
+     * 图片排序功能
+     */
+    private Integer sort;
+
 
     public Long getImageId() {
             return imageId;
@@ -58,8 +63,16 @@ private static final long serialVersionUID = 1L;
         public void setImageUrl(String imageUrl) {
             this.imageUrl = imageUrl;
             }
-    
-@Override
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
+    @Override
 public String toString() {
         return "PostsImage{" +
                 "imageId=" + imageId +

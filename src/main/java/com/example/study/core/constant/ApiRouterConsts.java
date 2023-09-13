@@ -38,6 +38,16 @@ public class ApiRouterConsts {
     public static final String QUESTIONS_URL_PREFIX = "/questions";
 
     /**
+     * 帖子请求路径前缀
+     */
+    public static final String POSTS_URL_PREFIX = "/posts";
+
+    /**
+     * 前台帖子请求路径前缀
+     */
+    public static final String API_FRONT_POSTS_URL_PREFIX = API_FRONT_URL_PREFIX + POSTS_URL_PREFIX;
+
+    /**
      * 前台题目请求路径前缀
      */
     public static final String API_FRONT_QUESTIONS_URL_PREFIX = API_FRONT_URL_PREFIX + QUESTIONS_URL_PREFIX;

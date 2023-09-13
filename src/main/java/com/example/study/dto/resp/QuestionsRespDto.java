@@ -3,6 +3,8 @@ package com.example.study.dto.resp;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.List;
 /**
  * 题库响应 dto
@@ -12,8 +14,11 @@ import java.util.List;
  */
 @Data
 @Builder
-public class QuestionsRespDto {
+public class QuestionsRespDto implements Serializable {
 
+
+    @Serial
+    private static final long serialVersionUID = 1L;
     /**
      * 题库id
      */

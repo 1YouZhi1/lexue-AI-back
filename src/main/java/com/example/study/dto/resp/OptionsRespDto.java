@@ -3,6 +3,8 @@ package com.example.study.dto.resp;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 选项响应 dto
  *
@@ -11,7 +13,7 @@ import lombok.Data;
  */
 @Data
 @Builder
-public class OptionsRespDto {
+public class OptionsRespDto implements Serializable {
 
     private Long option_id;
 
