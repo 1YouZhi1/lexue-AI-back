@@ -96,12 +96,8 @@ public class PostsServiceImpl implements PostsService {
         String postsContent = postsContentMapper.selectOne(postsContentQueryWrapper).getPostsContent();
 
 
-        QueryWrapper<UserInfo> userInfoQueryWrapper = new QueryWrapper<>();
-        userInfoQueryWrapper.select("nick_name, user_photo")
-                .eq("id", posts.getUserId())
-                .last(DatabaseConsts.SqlEnum.LIMIT_1.getSql());
-        UserInfo userInfo = userInfoMapper.selectOne(userInfoQueryWrapper);
-
+        UserInfo userInfo = userInfoMapper.selectById(posts.getUserId());
+        System.out.println(userInfo);
         return RestResp.ok(PostsInfoRespDto.builder()
                 .p_id(posts.getPostId())
                 .title(posts.getTitle())
