@@ -164,6 +164,7 @@ management:
   endpoints:
     # ?? HTTP ??? Web ??
     web:
+      upload-path: D:\file\java\project\image
       exposure:
         # ????? Web ??
         include: "*"
