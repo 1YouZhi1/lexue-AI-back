@@ -38,10 +38,9 @@ public class Generator {
     public static void main(String[] args) {
 
         // 传入需要生成的表名，多个用英文逗号分隔，所有用 all 表示
-        genCode("rotation");
+        genCode("notice");
 
     }
-
 
     /**
      * 代码生成
