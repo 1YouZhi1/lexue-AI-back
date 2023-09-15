@@ -43,6 +43,11 @@ public class ApiRouterConsts {
     public static final String POSTS_URL_PREFIX = "/posts";
 
     /**
+     * 轮播图请求路径前缀
+     */
+    public static final String ROTATION_URL_PREFIX  = "/rotation";
+
+    /**
      * 前台帖子请求路径前缀
      */
     public static final String API_FRONT_POSTS_URL_PREFIX = API_FRONT_URL_PREFIX + POSTS_URL_PREFIX;
@@ -51,6 +56,11 @@ public class ApiRouterConsts {
      * 前台题目请求路径前缀
      */
     public static final String API_FRONT_QUESTIONS_URL_PREFIX = API_FRONT_URL_PREFIX + QUESTIONS_URL_PREFIX;
+
+    /**
+     * 前台轮播图请求路径前缀
+     */
+    public static final String API_FRONT_ROTATION_URL_PREFIX = API_FRONT_URL_PREFIX +ROTATION_URL_PREFIX;
 
     /**
      * 前台用户 请求前缀
