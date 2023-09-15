@@ -24,12 +24,15 @@ public class QuestionsRespDto implements Serializable {
      */
     private Long id;
 
+    private String text;
+
     private Integer type;
 
     private List<OptionsRespDto> options;
 
-    public QuestionsRespDto(Long id, Integer type, List<OptionsRespDto> options) {
+    public QuestionsRespDto(Long id, String name, Integer type, List<OptionsRespDto> options) {
         this.id = id;
+        this.text = name;
         this.type = type;
         this.options = options;
     }

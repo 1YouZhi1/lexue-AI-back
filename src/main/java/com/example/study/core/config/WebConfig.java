@@ -46,7 +46,8 @@ public class WebConfig implements WebMvcConfigurer {
                         ApiRouterConsts.API_ADMIN_URL_PREFIX + "/**")
                 .excludePathPatterns(ApiRouterConsts.API_FRONT_USER_URL_PREFIX + "/register",
                         ApiRouterConsts.API_FRONT_USER_URL_PREFIX + "/login",
-                        ApiRouterConsts.API_ADMIN_URL_PREFIX + "/login")
+                        ApiRouterConsts.API_ADMIN_URL_PREFIX + "/login",
+                        ApiRouterConsts.API_FRONT_POSTS_URL_PREFIX + "/many/*")
                 .order(2);
 
         registry.addInterceptor(tokenParseInterceptor)

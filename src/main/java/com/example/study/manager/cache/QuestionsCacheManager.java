@@ -58,7 +58,7 @@ public class QuestionsCacheManager {
                 OptionsRespDto optionsRespDto = new OptionsRespDto(option.getOptionId(),option.getOptionText(),option.getIsCorrect());
                 optionsRespDtoList.add(optionsRespDto);
             }
-            QuestionsRespDto questionsRespDto = new QuestionsRespDto(question.getQuestionId(), question.getType(),optionsRespDtoList);
+            QuestionsRespDto questionsRespDto = new QuestionsRespDto(question.getQuestionId(), question.getName(),question.getType(),optionsRespDtoList);
             questionsRespDtoList.add(questionsRespDto);
         }
 

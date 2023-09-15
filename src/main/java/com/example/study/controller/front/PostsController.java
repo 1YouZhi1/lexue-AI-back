@@ -26,7 +26,7 @@ public class PostsController {
 
     private final PostsService postsService;
 
-    @GetMapping("{num}")
+    @GetMapping("/many/{num}")
     public RestResp<List<PostsRespDto>> getPosts(@PathVariable int num) {
         return postsService.getPosts(num);
     }
