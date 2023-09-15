@@ -2,16 +2,19 @@ package com.example.study.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author YouZhi
  * @date 2023/09/15
  */
+@TableName("notice")
 public class Notice implements Serializable {
 
 private static final long serialVersionUID = 1L;
@@ -69,7 +72,7 @@ private static final long serialVersionUID = 1L;
         public void setType(Integer type) {
             this.type = type;
             }
-    
+
 @Override
 public String toString() {
         return "Notice{" +

@@ -45,6 +45,11 @@ public class CacheConsts {
     public static final String ROTATION_INFO_CACHE_NAME = "rotationInfoCacheName";
 
     /**
+     * 通告缓存
+     */
+    public static final String NOTICE_INFO_CACHE_NAME = "noticeInfoCacheName";
+
+    /**
      * 缓存配置常量
      */
     public enum CacheEnum {
@@ -52,7 +57,8 @@ public class CacheConsts {
         USER_INFO_CACHE(2, USER_INFO_CACHE_NAME, 60 * 60 * 24, 10000),
         LATEST_NEWS_CACHE(2, LATEST_NEWS_CACHE_NAME, 60 * 60*24, 1000),
         QUESTIONS_INFO_FIVE_CACHE(2,QUESTIONS_INFO_CACHE_NAME, 60 * 60 *24, 1000),
-        ROTATION_INFO_CACHE(2, ROTATION_INFO_CACHE_NAME, 60 * 60 *24, 1000);
+        ROTATION_INFO_CACHE(2, ROTATION_INFO_CACHE_NAME, 60 * 60 *24, 1000),
+        NOTICE_INFO_CACHE(2, NOTICE_INFO_CACHE_NAME, 60 * 60 *24, 100);
 
         /**
          * 缓存类型 0-本地 1-本地和远程 2-远程

@@ -48,6 +48,16 @@ public class ApiRouterConsts {
     public static final String ROTATION_URL_PREFIX  = "/rotation";
 
     /**
+     * 通告请求路径
+     */
+    public static final String NOTICE_URL_PREFIX = "/notice";
+
+    /**
+     * 前台通告请求路径前缀
+     */
+    public static final String API_NOTICE_URL_PREFIX = API_FRONT_URL_PREFIX + NOTICE_URL_PREFIX;
+
+    /**
      * 前台帖子请求路径前缀
      */
     public static final String API_FRONT_POSTS_URL_PREFIX = API_FRONT_URL_PREFIX + POSTS_URL_PREFIX;
