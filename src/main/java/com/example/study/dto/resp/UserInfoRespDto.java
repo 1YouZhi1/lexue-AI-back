@@ -27,4 +27,14 @@ public class UserInfoRespDto {
      * 用户性别
      * */
     private Integer userSex;
+
+    /**
+     * 用户额外信息id
+     */
+    private Long otherInfo_id;
+
+    /**
+     * 用户背景图片
+     */
+    private String backUrl;
 }

@@ -8,7 +8,9 @@ import com.example.study.core.constant.DatabaseConsts;
 import com.example.study.core.constant.SystemConfigConsts;
 import com.example.study.core.utils.JwtUtils;
 import com.example.study.dao.entity.UserInfo;
+import com.example.study.dao.entity.UserMsg;
 import com.example.study.dao.mapper.UserInfoMapper;
+import com.example.study.dao.mapper.UserMsgMapper;
 import com.example.study.dto.req.UserLoginReqDto;
 import com.example.study.dto.req.UserRegisterReqDto;
 import com.example.study.dto.resp.UserInfoRespDto;
@@ -36,6 +38,8 @@ public class UserServiceImpl implements UserService {
 
     @NonNull
     private UserInfoMapper userInfoMapper;
+
+    private final UserMsgMapper userMsgMapper;
 
     @NonNull
     private JwtUtils jwtUtils;
@@ -98,11 +102,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public RestResp<UserInfoRespDto> getUserInfo(Long id) {
         UserInfo userInfo = userInfoMapper.selectById(id);
+
+        QueryWrapper<UserMsg> queryWrapper = new QueryWrapper<>();
+        queryWrapper.select(DatabaseConsts.UserMsg.COLUMN_ID_BACK_URL)
+                .eq(DatabaseConsts.UserMsg.COLUMN_UID, id)
+                .last(DatabaseConsts.SqlEnum.LIMIT_1.getSql());
+        UserMsg userMsg = userMsgMapper.selectOne(queryWrapper);
+
         return RestResp.ok(
                 UserInfoRespDto.builder()
                         .nickName(userInfo.getNickName())
                         .userSex(userInfo.getUserSex())
                         .userPhoto(userInfo.getUserPhoto())
+                        .otherInfo_id(userMsg.getId())
+                        .backUrl(userMsg.getBackUrl())
                         .build()
         );
     }

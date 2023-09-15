@@ -21,7 +21,6 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class UserInfoCacheManager {
 
-    @NonNull
     private final UserInfoMapper userInfoMapper;
 
     @Cacheable(cacheManager = CacheConsts.REDIS_CACHE_MANAGER, value = CacheConsts.USER_INFO_CACHE_NAME)

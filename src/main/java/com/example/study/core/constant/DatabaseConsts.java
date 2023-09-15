@@ -35,6 +35,18 @@ public class DatabaseConsts {
     }
 
     /**
+     * 用户额外内容表
+     */
+    public static class UserMsg{
+        private UserMsg() {
+            throw new IllegalStateException(SystemConfigConsts.CONST_INSTANCE_EXCEPTION_MSG);
+        }
+
+        public static final String COLUMN_UID = "u_id";
+        public static final String COLUMN_ID_BACK_URL = "id,backUrl";
+    }
+
+    /**
      * 通用列枚举类
      */
     @Getter
