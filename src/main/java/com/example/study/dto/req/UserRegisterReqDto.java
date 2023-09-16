@@ -16,4 +16,5 @@ public class UserRegisterReqDto {
 
     private String password;
 
+
 }

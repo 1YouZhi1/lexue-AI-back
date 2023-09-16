@@ -1,6 +1,7 @@
 package com.example.study.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.study.core.auth.UserHolder;
 import com.example.study.core.common.constant.ErrorCodeEnum;
 import com.example.study.core.common.exception.BusinessException;
 import com.example.study.core.common.resp.RestResp;
@@ -13,9 +14,11 @@ import com.example.study.dao.mapper.UserInfoMapper;
 import com.example.study.dao.mapper.UserMsgMapper;
 import com.example.study.dto.req.UserLoginReqDto;
 import com.example.study.dto.req.UserRegisterReqDto;
+import com.example.study.dto.req.UserUpDataReqDto;
 import com.example.study.dto.resp.UserInfoRespDto;
 import com.example.study.dto.resp.UserLoginRespDto;
 import com.example.study.dto.resp.UserRegisterRespDto;
+import com.example.study.manager.cache.UserInfoCacheManager;
 import com.example.study.service.UserService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -40,6 +43,7 @@ public class UserServiceImpl implements UserService {
     private UserInfoMapper userInfoMapper;
 
     private final UserMsgMapper userMsgMapper;
+
 
     @NonNull
     private JwtUtils jwtUtils;
@@ -120,6 +124,25 @@ public class UserServiceImpl implements UserService {
         );
     }
 
+    @Override
+    public RestResp upDataUserInfo(UserUpDataReqDto dto) {
+        Long userId = UserHolder.getUserId();
+        UserInfo userInfo = new UserInfo();
+        userInfo.setId(userId);
+        userInfo.setNickName(dto.getNickName());
+        userInfo.setUserPhoto(dto.getUserPhoto());
+        userInfo.setUserSex(dto.getUserSex());
+        userInfoMapper.updateById(userInfo);
+
+        QueryWrapper<UserMsg> queryWrapper = new QueryWrapper<>();
+        queryWrapper.select("id")
+                .eq("u_id", userId)
+                .last(DatabaseConsts.SqlEnum.LIMIT_1.getSql());
+        UserMsg userMsg = userMsgMapper.selectOne(queryWrapper);
+        userMsg.setBackUrl(dto.getBackUrl());
+        userMsgMapper.updateById(userMsg);
+        return RestResp.ok();
+    }
 
 
 }
