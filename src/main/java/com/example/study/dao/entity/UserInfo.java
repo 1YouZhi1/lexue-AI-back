@@ -72,6 +72,18 @@ private static final long serialVersionUID = 1L;
          */
         private LocalDateTime updateTime;
 
+    /**
+     * 背景图片
+     */
+    private String backUrl;
+
+    public String getBackUrl() {
+        return backUrl;
+    }
+
+    public void setBackUrl(String backUrl) {
+        this.backUrl = backUrl;
+    }
 
     public Long getId() {
             return id;

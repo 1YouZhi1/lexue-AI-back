@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author YouZhi
- * @date 2023/09/16
+ * @date 2023/09/17
  */
 public interface CommentsMapper extends BaseMapper<Comments> {
 

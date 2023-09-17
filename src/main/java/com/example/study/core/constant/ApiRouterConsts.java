@@ -43,6 +43,11 @@ public class ApiRouterConsts {
     public static final String POSTS_URL_PREFIX = "/posts";
 
     /**
+     * 评论请求路径前缀
+     */
+    public static final String COMMENTS_URL_PREFIX = "/comments";
+
+    /**
      * 轮播图请求路径前缀
      */
     public static final String ROTATION_URL_PREFIX  = "/rotation";
@@ -51,6 +56,11 @@ public class ApiRouterConsts {
      * 通告请求路径
      */
     public static final String NOTICE_URL_PREFIX = "/notice";
+
+    /**
+     * 前台评论请求路径前缀
+     */
+    public static final String API_FRONT_COMMENTS_URL_PREFIX = API_FRONT_URL_PREFIX + COMMENTS_URL_PREFIX;
 
     /**
      * 前台通告请求路径前缀

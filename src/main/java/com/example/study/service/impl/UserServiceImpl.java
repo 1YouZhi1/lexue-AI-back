@@ -45,6 +45,7 @@ public class UserServiceImpl implements UserService {
     private final UserMsgMapper userMsgMapper;
 
 
+
     @NonNull
     private JwtUtils jwtUtils;
 
@@ -65,6 +66,8 @@ public class UserServiceImpl implements UserService {
         userInfo.setUpdateTime(LocalDateTime.now());
         userInfo.setSalt("0");
         userInfoMapper.insert(userInfo);
+
+
 
         return RestResp.ok(
                 UserRegisterRespDto.builder()
@@ -118,7 +121,6 @@ public class UserServiceImpl implements UserService {
                         .nickName(userInfo.getNickName())
                         .userSex(userInfo.getUserSex())
                         .userPhoto(userInfo.getUserPhoto())
-                        .otherInfo_id(userMsg.getId())
                         .backUrl(userMsg.getBackUrl())
                         .build()
         );
@@ -132,15 +134,8 @@ public class UserServiceImpl implements UserService {
         userInfo.setNickName(dto.getNickName());
         userInfo.setUserPhoto(dto.getUserPhoto());
         userInfo.setUserSex(dto.getUserSex());
+        userInfo.setBackUrl(dto.getBackUrl());
         userInfoMapper.updateById(userInfo);
-
-        QueryWrapper<UserMsg> queryWrapper = new QueryWrapper<>();
-        queryWrapper.select("id")
-                .eq("u_id", userId)
-                .last(DatabaseConsts.SqlEnum.LIMIT_1.getSql());
-        UserMsg userMsg = userMsgMapper.selectOne(queryWrapper);
-        userMsg.setBackUrl(dto.getBackUrl());
-        userMsgMapper.updateById(userMsg);
         return RestResp.ok();
     }
 
