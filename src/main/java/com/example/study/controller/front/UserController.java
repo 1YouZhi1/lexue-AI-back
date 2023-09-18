@@ -46,8 +46,13 @@ public class UserController {
     }
 
     @PutMapping
-    public RestResp upDataUserInfo(UserUpDataReqDto dto){
+    public RestResp upDataUserInfo(@RequestBody UserUpDataReqDto dto){
         return userService.upDataUserInfo(dto);
+    }
+
+    @PutMapping("/image")
+    public RestResp upDataImg(String url){
+        return userService.upDataUserImg(url, UserHolder.getUserId());
     }
 
 }

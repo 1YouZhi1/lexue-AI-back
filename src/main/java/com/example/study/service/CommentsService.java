@@ -15,9 +15,16 @@ public interface CommentsService {
 
     /**
      * 获取评论
+     * @param post_id
+     * @return
+     */
+    RestResp<List<CommentsRespDto>> getComments(Long post_id);
+
+    /**
+     * 新增评论
      * @param commentsReqDto
      * @return
      */
-    RestResp<List<CommentsRespDto>> getComments(CommentsReqDto commentsReqDto);
+    RestResp insertComments(CommentsReqDto commentsReqDto);
 
 }

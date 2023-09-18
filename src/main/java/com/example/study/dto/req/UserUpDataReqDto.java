@@ -19,11 +19,6 @@ public class UserUpDataReqDto {
     private String nickName;
 
     /**
-     * 用户头像
-     */
-    private String userPhoto;
-
-    /**
      * 用户性别
      */
     private Integer userSex;

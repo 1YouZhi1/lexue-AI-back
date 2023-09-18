@@ -18,4 +18,8 @@ public class CommentsReqDto {
      */
     private Long post_id;
 
+    /**
+     * 评论内容
+     */
+    private String title;
 }

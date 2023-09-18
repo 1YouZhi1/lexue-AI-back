@@ -60,4 +60,13 @@ public class CommentsRespDto {
         this.likes = likes;
         this.create_time = create_time;
     }
+
+    //    public CommentsRespDto( Long post_id, String title, Long user_id, String nickName, Long likes, LocalDateTime create_time) {
+//        this.post_id = post_id;
+//        this.title = title;
+//        this.user_id = user_id;
+//        this.nickName = nickName;
+//        this.likes = likes;
+//        this.create_time = create_time;
+//    }
 }

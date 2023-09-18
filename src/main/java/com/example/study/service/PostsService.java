@@ -1,6 +1,7 @@
 package com.example.study.service;
 
 import com.example.study.core.common.resp.RestResp;
+import com.example.study.dto.req.PostsReqDto;
 import com.example.study.dto.resp.PostsInfoRespDto;
 import com.example.study.dto.resp.PostsRespDto;
 
@@ -27,4 +28,11 @@ public interface PostsService {
      * @return
      */
     RestResp<PostsInfoRespDto> getPostInfo(Long id);
+
+    /**
+     * 发布帖子
+     * @param dto
+     * @return
+     */
+    RestResp insertPost(PostsReqDto dto);
 }

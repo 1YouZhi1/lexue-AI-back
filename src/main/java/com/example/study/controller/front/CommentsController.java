@@ -27,8 +27,9 @@ public class CommentsController {
     private final CommentsService commentsService;
 
     @GetMapping
-    public RestResp<List<CommentsRespDto>> getComments(CommentsReqDto commentsReqDto) {
-        return commentsService.getComments(commentsReqDto);
+    public RestResp<List<CommentsRespDto>> getComments(Long post_id) {
+        return commentsService.getComments(post_id);
     }
+
 
 }

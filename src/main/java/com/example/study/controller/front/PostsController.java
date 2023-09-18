@@ -2,14 +2,12 @@ package com.example.study.controller.front;
 
 import com.example.study.core.common.resp.RestResp;
 import com.example.study.core.constant.ApiRouterConsts;
+import com.example.study.dto.req.PostsReqDto;
 import com.example.study.dto.resp.PostsInfoRespDto;
 import com.example.study.dto.resp.PostsRespDto;
 import com.example.study.service.PostsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,4 +34,8 @@ public class PostsController {
         return postsService.getPostInfo(id);
     }
 
+    @PostMapping
+    public RestResp insertPost(@RequestBody PostsReqDto dto) {
+        return postsService.insertPost(dto);
+    }
 }

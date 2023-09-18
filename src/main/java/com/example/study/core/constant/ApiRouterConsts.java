@@ -58,6 +58,16 @@ public class ApiRouterConsts {
     public static final String NOTICE_URL_PREFIX = "/notice";
 
     /**
+     * 课程请求前缀
+     */
+    public static final String CLASS_URL_PREFIX = "/class";
+
+    /**
+     * 前台课程请求路径前缀
+     */
+    public static final String API_FRONT_CLASS_URL_PREFIX = API_FRONT_URL_PREFIX + CLASS_URL_PREFIX;
+
+    /**
      * 前台评论请求路径前缀
      */
     public static final String API_FRONT_COMMENTS_URL_PREFIX = API_FRONT_URL_PREFIX + COMMENTS_URL_PREFIX;

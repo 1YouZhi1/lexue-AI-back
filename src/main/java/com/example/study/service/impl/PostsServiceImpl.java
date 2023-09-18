@@ -1,6 +1,7 @@
 package com.example.study.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.study.core.auth.UserHolder;
 import com.example.study.core.common.resp.RestResp;
 import com.example.study.core.constant.DatabaseConsts;
 import com.example.study.dao.entity.Posts;
@@ -11,12 +12,14 @@ import com.example.study.dao.mapper.PostsContentMapper;
 import com.example.study.dao.mapper.PostsImageMapper;
 import com.example.study.dao.mapper.PostsMapper;
 import com.example.study.dao.mapper.UserInfoMapper;
+import com.example.study.dto.req.PostsReqDto;
 import com.example.study.dto.resp.PostsInfoRespDto;
 import com.example.study.dto.resp.PostsRespDto;
 import com.example.study.service.PostsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,5 +113,34 @@ public class PostsServiceImpl implements PostsService {
                 .nickName(userInfo.getNickName())
                 .userPhoto(userInfo.getUserPhoto())
                 .build());
+    }
+
+    @Override
+    public RestResp insertPost(PostsReqDto dto) {
+        Long userId = UserHolder.getUserId();
+
+        Posts posts = new Posts();
+        posts.setUserId(userId);
+        posts.setTitle(dto.getTitle());
+        posts.setTimestamp(LocalDateTime.now());
+        posts.setLikes(0L);
+        posts.setComments(0L);
+        int insert = postsMapper.insert(posts);
+
+        PostsContent postsContent = new PostsContent();
+        postsContent.setpId(posts.getPostId());
+        postsContent.setPostsContent(dto.getContent());
+        postsContentMapper.insert(postsContent);
+
+        for(String url: dto.getImageUrl()) {
+            PostsImage postsImage = new PostsImage();
+            postsImage.setpId(posts.getPostId());
+            postsImage.setImageUrl(url);
+            postsImageMapper.insert(postsImage);
+        }
+
+        System.out.println(posts.getPostId());
+
+        return RestResp.ok();
     }
 }

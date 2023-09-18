@@ -41,7 +41,7 @@ public class CommentsCacheManager {
             QueryWrapper<UserInfo> userInfoQueryWrapper = new QueryWrapper<>();
             userInfoQueryWrapper.select("nick_name");
             CommentsRespDto commentsRespDto = new CommentsRespDto(
-                    null,
+                    comments1.getCommentId(),
                     comments1.getPostId(),
                     comments1.getContent(),
                     comments1.getUserId(),

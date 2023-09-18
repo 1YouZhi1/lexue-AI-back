@@ -64,6 +64,7 @@ public class UserServiceImpl implements UserService {
         userInfo.setPassword(DigestUtils.md5DigestAsHex(dto.getPassword().getBytes(StandardCharsets.UTF_8)));
         userInfo.setCreateTime(LocalDateTime.now());
         userInfo.setUpdateTime(LocalDateTime.now());
+
         userInfo.setSalt("0");
         userInfoMapper.insert(userInfo);
 
@@ -132,9 +133,18 @@ public class UserServiceImpl implements UserService {
         UserInfo userInfo = new UserInfo();
         userInfo.setId(userId);
         userInfo.setNickName(dto.getNickName());
-        userInfo.setUserPhoto(dto.getUserPhoto());
         userInfo.setUserSex(dto.getUserSex());
         userInfo.setBackUrl(dto.getBackUrl());
+        userInfoMapper.updateById(userInfo);
+        return RestResp.ok();
+    }
+
+    @Override
+    public RestResp upDataUserImg(String url,Long id) {
+        UserInfo userInfo = new UserInfo();
+        Long userId = UserHolder.getUserId();
+        userInfo.setId(userId);
+        userInfo.setUserPhoto(url);
         userInfoMapper.updateById(userInfo);
         return RestResp.ok();
     }
