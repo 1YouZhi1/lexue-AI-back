@@ -3,6 +3,7 @@ package com.example.study.controller.front;
 import java.util.List;
 import com.example.study.core.common.resp.RestResp;
 import com.example.study.core.constant.ApiRouterConsts;
+import com.example.study.dto.resp.ClassInfoRespDto;
 import com.example.study.dto.resp.ClassTypeInfoRespDto;
 import com.example.study.dto.resp.ClassTypeRespDto;
 import com.example.study.service.ClassService;
@@ -34,6 +35,11 @@ public class ClassController {
     @GetMapping("info/{id}")
     public RestResp<List<ClassTypeInfoRespDto>> getTypeInfo(@PathVariable("id") Long id) {
         return classService.getTypeInfo(id);
+    }
+
+    @GetMapping("class/{id}")
+    public RestResp<ClassInfoRespDto> getClass(@PathVariable("id") Long id) {
+        return classService.getClassInfo(id);
     }
 
 }

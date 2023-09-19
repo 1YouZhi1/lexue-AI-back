@@ -3,6 +3,8 @@ package com.example.study.service;
 import java.util.List;
 
 import com.example.study.core.common.resp.RestResp;
+import com.example.study.dao.entity.ClassInfo;
+import com.example.study.dto.resp.ClassInfoRespDto;
 import com.example.study.dto.resp.ClassTypeInfoRespDto;
 import com.example.study.dto.resp.ClassTypeRespDto;
 
@@ -27,5 +29,12 @@ public interface ClassService {
      * @return
      */
     RestResp<List<ClassTypeInfoRespDto>> getTypeInfo(Long id);
+
+    /**
+     * 获取课程详情
+     * @param id
+     * @return
+     */
+    RestResp<ClassInfoRespDto> getClassInfo(Long id);
 
 }
