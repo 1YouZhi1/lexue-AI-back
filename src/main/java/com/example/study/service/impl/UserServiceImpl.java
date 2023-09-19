@@ -122,7 +122,7 @@ public class UserServiceImpl implements UserService {
                         .nickName(userInfo.getNickName())
                         .userSex(userInfo.getUserSex())
                         .userPhoto(userInfo.getUserPhoto())
-                        .backUrl(userMsg.getBackUrl())
+                        .backUrl(userInfo.getBackUrl())
                         .build()
         );
     }

@@ -30,6 +30,16 @@ public class CacheConsts {
     public static final String USER_INFO_CACHE_NAME = "userInfoCache";
 
     /**
+     * 课程类别
+     */
+    public static final String CLASS_TYPE_CACHE_NAME = "classTypeCache";
+
+    /**
+     *课程类别详情
+     */
+    public static final String CLASS_TYPE_INFO_CACHE_NAME = "classTypeInfoCacheName";
+
+    /**
      * 评论信息缓存
      */
     public static final String COMMENTS_CACHE_MANAGER = "commentsCacheManager";
@@ -64,8 +74,9 @@ public class CacheConsts {
         QUESTIONS_INFO_FIVE_CACHE(2,QUESTIONS_INFO_CACHE_NAME, 60 * 60 *24, 1000),
         ROTATION_INFO_CACHE(2, ROTATION_INFO_CACHE_NAME, 60 * 60 *24, 1000),
         NOTICE_INFO_CACHE(2, NOTICE_INFO_CACHE_NAME, 60 * 60 *24, 100),
-        COMMENTS_INFO_CACHE(2, COMMENTS_CACHE_MANAGER, 60, 10000);
-
+        COMMENTS_INFO_CACHE(2, COMMENTS_CACHE_MANAGER, 60, 10000),
+        CLASS_TYPE_CACHE(2, CLASS_TYPE_CACHE_NAME, 60 * 60 * 24, 100),
+        CLASS_TYPE_INFO_CACHE(2, CLASS_TYPE_INFO_CACHE_NAME, 60 * 60 *24, 100);
         /**
          * 缓存类型 0-本地 1-本地和远程 2-远程
          */

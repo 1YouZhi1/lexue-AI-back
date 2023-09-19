@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author YouZhi
@@ -53,7 +53,7 @@ private static final long serialVersionUID = 1L;
         /**
          * 更新时间
          */
-        private LocalDateTime updataTime;
+        private LocalDateTime updateTime;
 
         /**
          * 课程视频
@@ -110,11 +110,11 @@ private static final long serialVersionUID = 1L;
             }
 
     public LocalDateTime getUpdataTime() {
-            return updataTime;
+            return updateTime;
             }
 
         public void setUpdataTime(LocalDateTime updataTime) {
-            this.updataTime = updataTime;
+            this.updateTime = updataTime;
             }
 
     public String getVideoUrl() {
@@ -124,7 +124,7 @@ private static final long serialVersionUID = 1L;
         public void setVideoUrl(String videoUrl) {
             this.videoUrl = videoUrl;
             }
-    
+
 @Override
 public String toString() {
         return "ClassInfo{" +
@@ -134,7 +134,7 @@ public String toString() {
                 ", labelId=" + labelId +
                 ", content=" + content +
                 ", createTime=" + createTime +
-                ", updataTime=" + updataTime +
+                ", updateTime=" + updateTime +
                 ", videoUrl=" + videoUrl +
         "}";
         }

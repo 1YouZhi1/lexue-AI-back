@@ -3,6 +3,8 @@ package com.example.study.dto.resp;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 课程类型 响应类
  *
@@ -11,7 +13,7 @@ import lombok.Data;
  */
 @Builder
 @Data
-public class ClassTypeRespDto {
+public class ClassTypeRespDto implements Serializable {
 
     /**
      * 返回的列表c_id
