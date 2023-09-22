@@ -39,18 +39,20 @@ public class CommentsCacheManager {
 
         for(Comments comments1 : comments){
             QueryWrapper<UserInfo> userInfoQueryWrapper = new QueryWrapper<>();
-            userInfoQueryWrapper.select("nick_name");
-            CommentsRespDto commentsRespDto = new CommentsRespDto(
-                    comments1.getCommentId(),
-                    comments1.getPostId(),
-                    comments1.getContent(),
-                    comments1.getUserId(),
-                    userInfoMapper.selectOne(userInfoQueryWrapper).getNickName(),
-                    comments1.getLikes(),
-                    comments1.getCreateTime()
-                    );
+            userInfoQueryWrapper.select("nick_name, user_photo")
+                    .eq("id", comments1.getUserId());
+            UserInfo userInfo = userInfoMapper.selectOne(userInfoQueryWrapper);
 
-            commentsRespDtoList.add(commentsRespDto);
+            commentsRespDtoList.add(CommentsRespDto.builder()
+                            .c_id(comments1.getCommentId())
+                    .post_id(comments1.getPostId())
+                    .title(comments1.getContent())
+                    .user_id(comments1.getUserId())
+                    .imageUrl(userInfo.getUserPhoto())
+                    .nickName(userInfo.getNickName())
+                    .likes(comments1.getLikes())
+                    .create_time(comments1.getCreateTime())
+                    .build());
         }
         return commentsRespDtoList;
     }

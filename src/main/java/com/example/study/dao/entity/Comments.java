@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author YouZhi
@@ -27,6 +27,8 @@ private static final long serialVersionUID = 1L;
          * 帖子id
          */
         private Long postId;
+
+
 
         /**
          * 帖子评论
@@ -122,7 +124,7 @@ private static final long serialVersionUID = 1L;
         public void setIsDeleted(Boolean isDeleted) {
             this.isDeleted = isDeleted;
             }
-    
+
 @Override
 public String toString() {
         return "Comments{" +

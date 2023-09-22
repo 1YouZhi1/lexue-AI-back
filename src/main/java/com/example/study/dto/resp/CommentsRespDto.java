@@ -1,9 +1,9 @@
 package com.example.study.dto.resp;
 
-import co.elastic.clients.util.DateTime;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @Builder
-public class CommentsRespDto {
+public class CommentsRespDto implements Serializable {
 
     /**
      * 评论id
@@ -37,6 +37,11 @@ public class CommentsRespDto {
     private Long user_id;
 
     /**
+     * 发布用户的头像
+     */
+    private String imageUrl;
+
+    /**
      * 发布的用户名
      */
     private String nickName;
@@ -51,22 +56,7 @@ public class CommentsRespDto {
      */
     private LocalDateTime create_time;
 
-    public CommentsRespDto(Long c_id, Long post_id, String title, Long user_id, String nickName, Long likes, LocalDateTime create_time) {
-        this.c_id = c_id;
-        this.post_id = post_id;
-        this.title = title;
-        this.user_id = user_id;
-        this.nickName = nickName;
-        this.likes = likes;
-        this.create_time = create_time;
-    }
 
-    //    public CommentsRespDto( Long post_id, String title, Long user_id, String nickName, Long likes, LocalDateTime create_time) {
-//        this.post_id = post_id;
-//        this.title = title;
-//        this.user_id = user_id;
-//        this.nickName = nickName;
-//        this.likes = likes;
-//        this.create_time = create_time;
-//    }
+
+
 }

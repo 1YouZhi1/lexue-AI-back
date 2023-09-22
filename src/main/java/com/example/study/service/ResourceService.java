@@ -1,7 +1,10 @@
 package com.example.study.service;
 
 import com.example.study.core.common.resp.RestResp;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Map;
 
 /**
  * 图片资源上传接口
@@ -16,4 +19,12 @@ public interface ResourceService {
      * @return 图片访问路径
      * */
     RestResp<String> uploadImage(MultipartFile file);
+
+    /**
+     * 视频文件上传
+     * @param request
+     * @return
+     */
+    public RestResp<Map<String, Object>> uploadVideo(MultipartFile file,HttpServletRequest request) throws Exception;
+
 }

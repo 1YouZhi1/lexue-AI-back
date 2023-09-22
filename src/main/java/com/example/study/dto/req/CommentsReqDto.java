@@ -19,6 +19,11 @@ public class CommentsReqDto {
     private Long post_id;
 
     /**
+     * 类型id  1--评论  2--
+     */
+    private Long type_id;
+
+    /**
      * 评论内容
      */
     private String title;

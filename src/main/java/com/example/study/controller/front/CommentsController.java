@@ -8,6 +8,7 @@ import com.example.study.dto.resp.CommentsRespDto;
 import com.example.study.service.CommentsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,9 +28,13 @@ public class CommentsController {
     private final CommentsService commentsService;
 
     @GetMapping
-    public RestResp<List<CommentsRespDto>> getComments(Long post_id) {
-        return commentsService.getComments(post_id);
+    public RestResp<List<CommentsRespDto>> getComments(Long post_id, Long type_id) {
+        return commentsService.getComments(post_id, type_id);
     }
 
+    @PostMapping
+    public RestResp insertComments(CommentsReqDto commentsReqDto) {
+        return commentsService.insertComments(commentsReqDto);
+    }
 
 }

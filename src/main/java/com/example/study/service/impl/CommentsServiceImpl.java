@@ -29,26 +29,39 @@ public class CommentsServiceImpl implements CommentsService {
     private final CommentsMapper commentsMapper;
 
     @Override
-    public RestResp<List<CommentsRespDto>> getComments(Long post_id) {
-        return RestResp.ok(commentsCacheManager.getComments(post_id));
+    public RestResp<List<CommentsRespDto>> getComments(Long post_id, Long type_id) {
+        if (type_id == 1) {
+            return RestResp.ok(commentsCacheManager.getComments(post_id));
+        } else if (type_id == 2) {
+            return null;
+        }
+        return null;
     }
+
 
     @Override
     public RestResp insertComments(CommentsReqDto commentsReqDto) {
 
-        try{
-            Comments comments = new Comments();
-            comments.setPostId(commentsReqDto.getPost_id());
-            comments.setContent(commentsReqDto.getTitle());
-            comments.setCreateTime(LocalDateTime.now());
-            comments.setUpdataTime(LocalDateTime.now());
-            comments.setIsDeleted(false);
-            comments.setLikes(0L);
-            commentsMapper.insert(comments);
-        }catch (Exception e) {
-            e.printStackTrace();
-            return RestResp.fail(ErrorCodeEnum.USER_COMMENT);
+        if (commentsReqDto.getType_id() == 1) {
+            try{
+                Comments comments = new Comments();
+                comments.setPostId(commentsReqDto.getPost_id());
+                comments.setContent(commentsReqDto.getTitle());
+                comments.setCreateTime(LocalDateTime.now());
+                comments.setUpdataTime(LocalDateTime.now());
+                comments.setIsDeleted(false);
+                comments.setLikes(0L);
+                commentsMapper.insert(comments);
+            }catch (Exception e) {
+                e.printStackTrace();
+                return RestResp.fail(ErrorCodeEnum.USER_COMMENT);
+            }
+            RestResp.ok();
+        }else {
+            return null;
         }
+
+
 
         return RestResp.ok();
     }

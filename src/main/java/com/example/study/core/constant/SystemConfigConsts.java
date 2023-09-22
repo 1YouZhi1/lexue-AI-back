@@ -32,4 +32,9 @@ public class SystemConfigConsts {
      */
     public static final String IMAGE_UPLOAD_DIRECTORY = "/image/";
 
+    /**
+     * 视频上传目录
+     */
+    public static final String VIDEO_UPLOAD_DIRECTORY = "video/";
+
 }

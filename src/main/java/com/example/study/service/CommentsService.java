@@ -14,11 +14,12 @@ import com.example.study.dto.resp.CommentsRespDto;
 public interface CommentsService {
 
     /**
+     *
      * 获取评论
      * @param post_id
      * @return
      */
-    RestResp<List<CommentsRespDto>> getComments(Long post_id);
+    RestResp<List<CommentsRespDto>> getComments(Long post_id, Long type_id);
 
     /**
      * 新增评论

@@ -18,25 +18,10 @@ import java.util.List;
 @RequiredArgsConstructor
 class StudyApplicationTests {
 
-    private final PostsMapper postsMapper;
-
-    private final PostsImageMapper postsImageMapper;
 
     @Test
     void contextLoads() {
-        int id = 2;
-        QueryWrapper<Posts> queryWrapper = new QueryWrapper<>();
-        queryWrapper.select("*")
-                .eq("post_id", id)
-                .last(DatabaseConsts.SqlEnum.LIMIT_1.getSql());
-        //获取帖子基本信息
-        Posts posts = postsMapper.selectOne(queryWrapper);
 
-        QueryWrapper<PostsImage> imageWrapper = new QueryWrapper();
-        imageWrapper.select("imageUrl")
-                .eq("p_id", posts.getPostId());
-        PostsImage postsImages = postsImageMapper.selectOne(imageWrapper);
-        System.out.println(postsImages);
 
     }
 
