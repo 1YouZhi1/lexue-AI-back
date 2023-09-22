@@ -115,7 +115,6 @@ public class UserServiceImpl implements UserService {
         queryWrapper.select(DatabaseConsts.UserMsg.COLUMN_ID_BACK_URL)
                 .eq(DatabaseConsts.UserMsg.COLUMN_UID, id)
                 .last(DatabaseConsts.SqlEnum.LIMIT_1.getSql());
-        UserMsg userMsg = userMsgMapper.selectOne(queryWrapper);
 
         return RestResp.ok(
                 UserInfoRespDto.builder()

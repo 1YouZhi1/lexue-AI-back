@@ -56,18 +56,21 @@ public class PostsServiceImpl implements PostsService {
 
         for (Posts posts: randomPosts) {
             QueryWrapper<PostsImage> imageWrapper = new QueryWrapper();
-            imageWrapper.select("imageUrl")
+            imageWrapper.select("image_url")
                     .eq("p_id", posts.getPostId())
                     .orderByDesc("sort")
                     .last(DatabaseConsts.SqlEnum.LIMIT_1.getSql());
-            String imageUrl = postsImageMapper.selectOne(imageWrapper).getImageUrl();
-            postsRespDtoList.add(PostsRespDto.builder()
-                    .p_id(posts.getPostId())
-                    .title(posts.getTitle())
-                    .imageUrl(imageUrl)
-                    .likes(posts.getLikes())
-                    .comments(posts.getComments())
-                    .build());
+            PostsImage postsImage = postsImageMapper.selectOne(imageWrapper);
+            if (postsImage != null) {
+                postsRespDtoList.add(PostsRespDto.builder()
+                        .p_id(posts.getPostId())
+                        .title(posts.getTitle())
+                        .imageUrl(postsImage.getImageUrl())
+                        .likes(posts.getLikes())
+                        .comments(posts.getComments())
+                        .build());
+            }
+
         }
         return RestResp.ok(postsRespDtoList);
     }
@@ -83,7 +86,7 @@ public class PostsServiceImpl implements PostsService {
         Posts posts = postsMapper.selectOne(queryWrapper);
 
         QueryWrapper<PostsImage> imageWrapper = new QueryWrapper();
-        imageWrapper.select("imageUrl")
+        imageWrapper.select("image_url")
                 .eq("p_id", posts.getPostId())
                 .orderByDesc("sort");
         List<PostsImage> postsImages = postsImageMapper.selectList(imageWrapper);

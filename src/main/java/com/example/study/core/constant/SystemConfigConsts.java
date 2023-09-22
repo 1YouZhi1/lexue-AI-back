@@ -35,6 +35,6 @@ public class SystemConfigConsts {
     /**
      * 视频上传目录
      */
-    public static final String VIDEO_UPLOAD_DIRECTORY = "video/";
+    public static final String VIDEO_UPLOAD_DIRECTORY = "/video/";
 
 }

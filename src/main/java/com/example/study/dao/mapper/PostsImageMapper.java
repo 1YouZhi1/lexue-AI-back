@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author YouZhi
- * @date 2023/09/13
+ * @date 2023/09/22
  */
 public interface PostsImageMapper extends BaseMapper<PostsImage> {
 

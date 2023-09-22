@@ -75,6 +75,7 @@ public class DatabaseConsts {
         LIMIT_1("limit 1"),
         LIMIT_2("limit 2"),
         LIMIT_5("limit 5"),
+        LIMIT_10("limit 10"),
         LIMIT_30("limit 30"),
         LIMIT_500("limit 500");
 

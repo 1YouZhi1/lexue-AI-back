@@ -31,7 +31,7 @@ public class NewsCacheManager {
         // 从新闻信息表中查询出最新发布的两条新闻
         QueryWrapper<NewsInfo> queryWrapper = new QueryWrapper<>();
         queryWrapper.orderByDesc(DatabaseConsts.CommonColumnEnum.CREATE_TIME.getName())
-                .last(DatabaseConsts.SqlEnum.LIMIT_2.getSql());
+                .last(DatabaseConsts.SqlEnum.LIMIT_10.getSql());
         return newsInfoMapper.selectList(queryWrapper).stream().map(v -> NewsInfoRespDto.builder()
                 .id(v.getId())
                 .categoryId(v.getCategoryId())

@@ -41,7 +41,7 @@ public class ResourceController {
      * @throws Exception
      */
     @PostMapping(value ="/video")
-    public RestResp<Map<String, Object>> uploadVideo(@RequestParam("file") MultipartFile file,HttpServletRequest request) throws Exception {
+    public RestResp<Map<String, Object>> uploadVideo(@RequestParam("file") MultipartFile file,HttpServletRequest request){
         return resourceService.uploadVideo(file, request);
     }
 

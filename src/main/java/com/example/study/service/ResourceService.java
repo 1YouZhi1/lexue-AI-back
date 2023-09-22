@@ -25,6 +25,6 @@ public interface ResourceService {
      * @param request
      * @return
      */
-    public RestResp<Map<String, Object>> uploadVideo(MultipartFile file,HttpServletRequest request) throws Exception;
+    RestResp<Map<String, Object>> uploadVideo(MultipartFile file,HttpServletRequest request);
 
 }

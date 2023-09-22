@@ -7,11 +7,11 @@ import java.io.Serializable;
 
 /**
  * <p>
- *
+ * 
  * </p>
  *
  * @author YouZhi
- * @date 2023/09/13
+ * @date 2023/09/22
  */
 @TableName("posts_image")
 public class PostsImage implements Serializable {
@@ -34,10 +34,10 @@ private static final long serialVersionUID = 1L;
          */
         private String imageUrl;
 
-    /**
-     * 图片排序功能
-     */
-    private Integer sort;
+        /**
+         * 排序
+         */
+        private Integer sort;
 
 
     public Long getImageId() {
@@ -65,19 +65,20 @@ private static final long serialVersionUID = 1L;
             }
 
     public Integer getSort() {
-        return sort;
-    }
+            return sort;
+            }
 
-    public void setSort(Integer sort) {
-        this.sort = sort;
-    }
-
-    @Override
+        public void setSort(Integer sort) {
+            this.sort = sort;
+            }
+    
+@Override
 public String toString() {
         return "PostsImage{" +
                 "imageId=" + imageId +
                 ", pId=" + pId +
                 ", imageUrl=" + imageUrl +
+                ", sort=" + sort +
         "}";
         }
         }
