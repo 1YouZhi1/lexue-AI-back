@@ -125,21 +125,21 @@ public class PostsServiceImpl implements PostsService {
         posts.setTimestamp(LocalDateTime.now());
         posts.setLikes(0L);
         posts.setComments(0L);
-        int insert = postsMapper.insert(posts);
+        postsMapper.insert(posts);
 
         PostsContent postsContent = new PostsContent();
         postsContent.setpId(posts.getPostId());
         postsContent.setPostsContent(dto.getContent());
         postsContentMapper.insert(postsContent);
 
-        for(String url: dto.getImageUrl()) {
+        for(int i = 0; i < dto.getImageUrl().size(); i++) {
             PostsImage postsImage = new PostsImage();
             postsImage.setpId(posts.getPostId());
-            postsImage.setImageUrl(url);
+            System.out.println(dto.getImageUrl().get(i));
+            postsImage.setImageUrl(dto.getImageUrl().get(i));
+
             postsImageMapper.insert(postsImage);
         }
-
-        System.out.println(posts.getPostId());
 
         return RestResp.ok();
     }

@@ -8,6 +8,7 @@ import com.example.study.dto.resp.QuestionsRespDto;
 import com.example.study.service.QuestionsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,8 +25,9 @@ public class QuestionsController {
 
     private final QuestionsService questionsService;
 
-    RestResp<List<QuestionsRespDto>> getQuestions(int num) {
-        return null;
+    @GetMapping("{num}")
+    RestResp<List<QuestionsRespDto>> getQuestions(@PathVariable("num") int num) {
+        return questionsService.getQuestions(num);
     }
 
     @GetMapping("everyday")

@@ -15,11 +15,6 @@ import java.util.List;
 public class PostsReqDto {
 
     /**
-     * 帖子id
-     */
-    private Long post_id;
-
-    /**
      * 帖子标题
      */
     private String title;
