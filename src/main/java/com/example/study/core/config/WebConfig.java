@@ -38,7 +38,7 @@ public class WebConfig implements WebMvcConfigurer {
 
         registry.addInterceptor(fileInterceptor)
                 .addPathPatterns(SystemConfigConsts.IMAGE_UPLOAD_DIRECTORY + "**",
-                        SystemConfigConsts.VIDEO_UPLOAD_DIRECTORY)
+                        SystemConfigConsts.VIDEO_UPLOAD_DIRECTORY + "**")
                 .order(1);
 
         registry.addInterceptor(authInterceptor)
