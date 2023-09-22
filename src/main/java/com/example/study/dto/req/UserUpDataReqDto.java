@@ -24,6 +24,11 @@ public class UserUpDataReqDto {
     private Integer userSex;
 
     /**
+     * 用户头像
+     */
+    private String userPhoto;
+
+    /**
      * 用户背景图片
      */
     private String backUrl;

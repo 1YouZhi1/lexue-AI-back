@@ -50,9 +50,5 @@ public class UserController {
         return userService.upDataUserInfo(dto);
     }
 
-    @PutMapping("/image")
-    public RestResp upDataImg(String url){
-        return userService.upDataUserImg(url, UserHolder.getUserId());
-    }
 
 }

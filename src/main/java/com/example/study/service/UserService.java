@@ -44,12 +44,5 @@ public interface UserService {
      */
     RestResp upDataUserInfo(UserUpDataReqDto dto);
 
-    /**
-     * 更新用户头像
-     *
-     * @param url
-     * @param id
-     * @return
-     */
-    RestResp upDataUserImg(String url, Long id);
+
 }

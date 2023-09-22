@@ -132,6 +132,7 @@ public class UserServiceImpl implements UserService {
         Long userId = UserHolder.getUserId();
         UserInfo userInfo = new UserInfo();
         userInfo.setId(userId);
+        userInfo.setUserPhoto(dto.getUserPhoto());
         userInfo.setNickName(dto.getNickName());
         userInfo.setUserSex(dto.getUserSex());
         userInfo.setBackUrl(dto.getBackUrl());
@@ -139,15 +140,6 @@ public class UserServiceImpl implements UserService {
         return RestResp.ok();
     }
 
-    @Override
-    public RestResp upDataUserImg(String url,Long id) {
-        UserInfo userInfo = new UserInfo();
-        Long userId = UserHolder.getUserId();
-        userInfo.setId(userId);
-        userInfo.setUserPhoto(url);
-        userInfoMapper.updateById(userInfo);
-        return RestResp.ok();
-    }
 
 
 }
