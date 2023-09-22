@@ -3,11 +3,15 @@ package com.example.study.core.utils;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
+
+import lombok.extern.slf4j.Slf4j;
 import org.bytedeco.javacpp.opencv_core;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.Frame;
+import org.bytedeco.javacv.Java2DFrameConverter;
 
 
 /**
@@ -15,6 +19,7 @@ import org.bytedeco.javacv.Frame;
 * @author YouZhi
  * @ClassName:  FrameGrabberKit
 */
+@Slf4j
 public class FrameGrabberKit {
 
 	/**
@@ -37,58 +42,43 @@ public class FrameGrabberKit {
        ImgUrl = imgfile;
        return ImgUrl;
 	 }
-/**
-     * 获取指定视频的帧并保存为图片至指定目录
-     * @param videofile  源视频文件路径
-     * @param framefile  截取帧的图片存放路径 例：F:\hfkjrecorder\target\4.jpg
-     * @throws Exception
-     */
-  public static void fetchFrame(String videofile, String framefile) throws Exception {
 
+    public static void fetchFrame(String videofile, String framefile) throws Exception {
         File targetFile = new File(framefile);
-        FFmpegFrameGrabber ff = new FFmpegFrameGrabber(videofile);
-        ff.start();
-        int lenght = ff.getLengthInFrames();
-        int i = 0;
-        int interceptionFrames = 30;//截取第几帧
-        //默认截取第50帧，如果第50帧大于视频总帧数的8成直接取长度lenght * 0.3
-        if(interceptionFrames >= lenght * 0.8) {
-            interceptionFrames = (int)(lenght * 0.3);
+        if (!targetFile.getParentFile().exists()) {
+            targetFile.getParentFile().mkdirs();
         }
-        Frame f = null;
-        while (i < lenght) {
-            // 过滤 前  interceptionFrames 帧，避免出现全黑的图片，依自己情况而定
-            f = ff.grabFrame();
-            if ((i > interceptionFrames) && (f.image != null)) {
-                break;
+        try {
+            File videoFile = new File(videofile);
+            if (videoFile.exists()) {
+                log.info("文件存在，路径正确！");
+                FFmpegFrameGrabber ff = new FFmpegFrameGrabber(videoFile);
+                ff.start();
+                int ftp = ff.getLengthInFrames();
+                int flag = 0;
+                Frame frame = null;
+                while (flag <= ftp) {
+                    frame = ff.grabImage();
+                    if ((flag > 3) && (frame != null)) {
+                        break;
+                    }
+                    flag++;
+                }
+                ImageIO.write(FrameToBufferedImage(frame), "jpg", targetFile);
+                ff.close();
+                ff.stop();
             }
-            i++;
+        } catch (Exception e) {
+            log.error("获取预览图失败", e);
         }
-        opencv_core.IplImage img = f.image;
-        int owidth = img.width();
-        int oheight = img.height();
-        // 对截取的帧进行等比例缩放 宽350、高160
-//        if(owidth > oheight) {//宽大于高
-//
-//        }else {//高大于宽
-//
-//        }
-        int width = 800;
-        int height = (int) (((double) width / owidth) * oheight);
-        /**
-         width - 所创建图像的宽度
-         height - 所创建图像的高度
-         imageType - 所创建图像的类型
-         TYPE_3BYTE_BGR - 表示一个具有 8 位 RGB 颜色分量的图像，对应于 Windows 风格的 BGR 颜色模型，具有用 3 字节存储的 Blue、Green 和 Red 三种颜色。
-         */
-        BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
-        //此方法返回 Graphics2D，但此处是出于向后兼容性的考虑。
-        bi.getGraphics().drawImage(f.image.getBufferedImage().getScaledInstance(width, height, Image.SCALE_SMOOTH),
-                0, 0, null);
-        ImageIO.write(bi, "jpg", targetFile);
-        //ff.flush();
-        ff.stop();
-      //  System.out.println(System.currentTimeMillis() - start);
-     }
+    }
+
+    private static RenderedImage FrameToBufferedImage(Frame frame) {
+        // 创建 BufferedImage 对象
+        Java2DFrameConverter converter = new Java2DFrameConverter();
+        BufferedImage bufferedImage = converter.getBufferedImage(frame);
+        return bufferedImage;
+    }
+
 }
 

@@ -80,7 +80,6 @@ public class ResourceServiceImpl implements ResourceService {
         Map<String, Object> resultMap = new HashMap<>();
 
         String savePath = generateVideoSavePath();
-
         // 文件原始名称
         String fileName = file.getOriginalFilename();
         // 从最后一个.开始截取。截取 fileName 的后缀名
@@ -92,7 +91,6 @@ public class ResourceServiceImpl implements ResourceService {
         String videoRootPath = fileUploadPath + savePath;
         String imageRootPath = fileUploadPath + generateImageSavePath();
         String videoFilePath = videoRootPath + File.separator + newFileName;
-
         File saveFile = new File(videoFilePath);
 
         // 判断目标文件所在目录是否存在
@@ -102,12 +100,10 @@ public class ResourceServiceImpl implements ResourceService {
                 throw new BusinessException(ErrorCodeEnum.USER_UPLOAD_FILE_ERROR);
             }
         }
-
         // 将内存中的数据写入磁盘
         file.transferTo(saveFile);
         // 视频上传保存url
         String videoUrl = savePath + File.separator + newFileName;
-
         // 视频封面图处理
         String newImgName = IdWorker.get32UUID() + ".jpg";
         String framefile = imageRootPath + File.separator + newImgName;
@@ -115,7 +111,8 @@ public class ResourceServiceImpl implements ResourceService {
         String imgUrlSave = generateImageSavePath() + File.separator + newImgName;
         // 视频截取封面图
         String imgUrl = FrameGrabberKit.getVedioImg(videoFilePath, framefile, imgUrlSave);
-
+        System.out.println(videoUrl);
+        System.out.println(imgUrl);
         resultMap.put("videoUrl", videoUrl);
         resultMap.put("imgUrl", imgUrl);
 

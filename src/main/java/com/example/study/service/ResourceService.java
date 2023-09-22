@@ -23,6 +23,7 @@ public interface ResourceService {
     /**
      * 视频文件上传
      * @param request
+     * @param file
      * @return
      */
     RestResp<Map<String, Object>> uploadVideo(MultipartFile file,HttpServletRequest request);
