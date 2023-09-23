@@ -20,7 +20,7 @@
         <jjwt.version>0.11.5</jjwt.version>
         <elasticsearch.version>8.2.0</elasticsearch.version>
         <xxl-job.version>2.3.1</xxl-job.version>
-        <sentinel.version>1.8.4</sentinel.version>
+        <sentinel.version>1.8.6</sentinel.version>
         <shardingsphere-jdbc.version>5.1.1</shardingsphere-jdbc.version>
         <redisson.version>3.19.1</redisson.version>
         <spring-boot-admin.version>3.0.0-M1</spring-boot-admin.version>
@@ -38,6 +38,7 @@
                     <artifactId>spring-boot-starter-tomcat</artifactId>
                 </exclusion>
             </exclusions>
+            <version>3.1.2</version>
         </dependency>
 
         <!-- 文件上传 -->
@@ -170,16 +171,38 @@
         </dependency>
 
         <!-- sentinel 相关 -->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.csp</groupId>-->
+<!--            <artifactId>sentinel-core</artifactId>-->
+<!--            <version>${sentinel.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.csp</groupId>-->
+<!--            <artifactId>sentinel-parameter-flow-control</artifactId>-->
+<!--            <version>${sentinel.version}</version>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>com.alibaba.csp</groupId>
-            <artifactId>sentinel-core</artifactId>
-            <version>${sentinel.version}</version>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+            <version>2022.0.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba.csp</groupId>
-            <artifactId>sentinel-parameter-flow-control</artifactId>
-            <version>${sentinel.version}</version>
+            <artifactId>sentinel-spring-webflux-adapter</artifactId>
+            <version>1.8.6</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-transport-simple-http</artifactId>
+            <version>1.8.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+
+
+
 
         <!-- ShardingSphere-JDBC -->
         <dependency>
@@ -248,6 +271,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.3</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

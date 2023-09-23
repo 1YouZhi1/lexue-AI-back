@@ -1,5 +1,6 @@
 package com.example.study.controller.front;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.example.study.core.auth.UserHolder;
 import com.example.study.core.common.resp.RestResp;
 import com.example.study.core.constant.ApiRouterConsts;
