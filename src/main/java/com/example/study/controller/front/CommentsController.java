@@ -7,10 +7,7 @@ import com.example.study.dto.req.CommentsReqDto;
 import com.example.study.dto.resp.CommentsRespDto;
 import com.example.study.service.CommentsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,7 +30,7 @@ public class CommentsController {
     }
 
     @PostMapping
-    public RestResp insertComments(CommentsReqDto commentsReqDto) {
+    public RestResp insertComments(@RequestBody CommentsReqDto commentsReqDto) {
         return commentsService.insertComments(commentsReqDto);
     }
 

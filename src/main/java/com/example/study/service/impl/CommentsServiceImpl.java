@@ -1,5 +1,6 @@
 package com.example.study.service.impl;
 
+import com.example.study.core.auth.UserHolder;
 import com.example.study.core.common.constant.ErrorCodeEnum;
 import com.example.study.core.common.resp.RestResp;
 import com.example.study.dao.entity.Comments;
@@ -50,6 +51,7 @@ public class CommentsServiceImpl implements CommentsService {
                 comments.setCreateTime(LocalDateTime.now());
                 comments.setUpdataTime(LocalDateTime.now());
                 comments.setIsDeleted(false);
+                comments.setUserId(UserHolder.getUserId());
                 comments.setLikes(0L);
                 commentsMapper.insert(comments);
             }catch (Exception e) {
