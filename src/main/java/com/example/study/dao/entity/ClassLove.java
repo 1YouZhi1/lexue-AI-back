@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Builder;
+import lombok.Data;
 
 import java.io.Serializable;
 
@@ -16,7 +17,7 @@ import java.io.Serializable;
  * @date 2023/09/24
  */
 @TableName("class_love")
-@Builder
+@Data
 public class ClassLove implements Serializable {
 
 private static final long serialVersionUID = 1L;
@@ -62,7 +63,15 @@ private static final long serialVersionUID = 1L;
             this.cId = cId;
             }
 
-@Override
+    public ClassLove( Long uId, Long cId) {
+        this.uId = uId;
+        this.cId = cId;
+    }
+
+    public ClassLove() {
+    }
+
+    @Override
 public String toString() {
         return "ClassLove{" +
                 "id=" + id +

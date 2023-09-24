@@ -43,4 +43,10 @@ public interface ClassService {
      */
     RestResp loveClass(Long id);
 
+    /**
+     * 获取收藏的课程
+     * @return
+     */
+    RestResp<List<ClassTypeInfoRespDto>> getLoveClass();
+
 }

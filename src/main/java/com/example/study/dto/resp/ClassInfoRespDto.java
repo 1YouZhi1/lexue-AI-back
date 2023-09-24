@@ -39,4 +39,9 @@ public class ClassInfoRespDto {
      * 创建时间
      */
     private LocalDateTime create_time;
+
+    /**
+     * 是否收藏
+     */
+    private Boolean like;
 }

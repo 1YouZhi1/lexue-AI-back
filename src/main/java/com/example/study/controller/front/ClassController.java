@@ -43,4 +43,9 @@ public class ClassController {
     public RestResp loveClass(@PathVariable("id") Long id) {
         return classService.loveClass(id);
     }
+
+    @GetMapping("love")
+    public RestResp<List<ClassTypeInfoRespDto>> getLoveClass() {
+        return classService.getLoveClass();
+    }
 }
