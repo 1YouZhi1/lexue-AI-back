@@ -9,10 +9,7 @@ import com.example.study.dto.resp.ClassTypeRespDto;
 import com.example.study.service.ClassService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 课程 接口
@@ -42,4 +39,8 @@ public class ClassController {
         return classService.getClassInfo(id);
     }
 
+    @PostMapping("love/{id}")
+    public RestResp loveClass(@PathVariable("id") Long id) {
+        return classService.loveClass(id);
+    }
 }

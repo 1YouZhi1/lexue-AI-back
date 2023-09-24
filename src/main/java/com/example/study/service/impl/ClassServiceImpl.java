@@ -1,9 +1,12 @@
 package com.example.study.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.study.core.auth.UserHolder;
 import com.example.study.core.common.resp.RestResp;
 import com.example.study.dao.entity.ClassInfo;
+import com.example.study.dao.entity.ClassLove;
 import com.example.study.dao.mapper.ClassInfoMapper;
+import com.example.study.dao.mapper.ClassLoveMapper;
 import com.example.study.dto.resp.ClassInfoRespDto;
 import com.example.study.dto.resp.ClassTypeInfoRespDto;
 import com.example.study.dto.resp.ClassTypeRespDto;
@@ -28,6 +31,8 @@ public class ClassServiceImpl implements ClassService {
 
     private final ClassInfoMapper classInfoMapper;
 
+    private final ClassLoveMapper classLoveMapper;
+
     @Override
     public RestResp<List<ClassTypeRespDto>> getType(Long id) {
         return RestResp.ok(classTypeCacheManager.getType(id));
@@ -51,6 +56,16 @@ public class ClassServiceImpl implements ClassService {
                 .create_time(classInfo.getCreateTime())
                 .video_url(classInfo.getVideoUrl())
                 .build());
+    }
+
+    @Override
+    public RestResp loveClass(Long id) {
+        Long userId = UserHolder.getUserId();
+        classLoveMapper.insert(ClassLove.builder()
+                .cId(id)
+                .uId(userId)
+                .build());
+        return RestResp.ok();
     }
 
 
