@@ -32,6 +32,7 @@ public class CommentsCacheManager {
     public List<CommentsRespDto> getComments(Long p_id){
         QueryWrapper<Comments> queryWrapper = new QueryWrapper<>();
         queryWrapper.select("comment_id,content,user_id,create_time,likes")
+                .eq("post_id", p_id)
                 .eq("is_deleted", false);
         List<Comments> comments = commentsMapper.selectList(queryWrapper);
 
@@ -57,5 +58,9 @@ public class CommentsCacheManager {
         return commentsRespDtoList;
     }
 
+    @Cacheable(cacheManager = CacheConsts.REDIS_CACHE_MANAGER, value =CacheConsts.COMMENTS_CACHE_MANAGER)
+    public void delComments(Long p_id) {
+
+    }
 
 }

@@ -64,7 +64,6 @@ public class UserServiceImpl implements UserService {
         userInfo.setPassword(DigestUtils.md5DigestAsHex(dto.getPassword().getBytes(StandardCharsets.UTF_8)));
         userInfo.setCreateTime(LocalDateTime.now());
         userInfo.setUpdateTime(LocalDateTime.now());
-
         userInfo.setSalt("0");
         userInfoMapper.insert(userInfo);
 

@@ -3,6 +3,7 @@ package com.example.study.controller.front;
 import com.example.study.core.common.resp.RestResp;
 import com.example.study.core.constant.ApiRouterConsts;
 import com.example.study.dao.mapper.CommentsMapper;
+import com.example.study.dto.req.CommentGetReqDto;
 import com.example.study.dto.req.CommentsReqDto;
 import com.example.study.dto.resp.CommentsRespDto;
 import com.example.study.service.CommentsService;
@@ -24,9 +25,9 @@ public class CommentsController {
 
     private final CommentsService commentsService;
 
-    @GetMapping
-    public RestResp<List<CommentsRespDto>> getComments(Long post_id, Long type_id) {
-        return commentsService.getComments(post_id, type_id);
+    @PostMapping("/get")
+    public RestResp<List<CommentsRespDto>> getComments(@RequestBody CommentGetReqDto commentGetReqDto) {
+        return commentsService.getComments(commentGetReqDto);
     }
 
     @PostMapping

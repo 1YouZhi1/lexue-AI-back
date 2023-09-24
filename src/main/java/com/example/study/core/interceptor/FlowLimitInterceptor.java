@@ -59,10 +59,10 @@ public class FlowLimitInterceptor implements HandlerInterceptor {
         rules.add(rule);
         FlowRuleManager.loadRules(rules);
 
-        // 接口防刷规则 1：所有的请求， 限制每个 IP 每秒钟最多只能通过 10 个，超出限制直接拒绝
+        // 接口防刷规则 1：所有的请求， 限制每个 IP 每秒钟最多只能通过 20 个，超出限制直接拒绝
         ParamFlowRule rule1 = new ParamFlowRule(RESOURCE)
                 .setParamIdx(0)
-                .setCount(10);
+                .setCount(20);
 
         // 接口防刷规则 2: 所有的请求，限制每个 IP 每分钟最多只能通过 1000 个， 超出限制直接拒绝
         ParamFlowRule rule2 = new ParamFlowRule(RESOURCE)
@@ -86,7 +86,7 @@ public class FlowLimitInterceptor implements HandlerInterceptor {
             response.setCharacterEncoding(StandardCharsets.UTF_8.name());
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             response.getWriter()
-                    .write(objectMapper.writeValueAsString(RestResp.fail(ErrorCodeEnum.USER_REQ_MANY)));
+                    .write(objectMapper.writeValueAsString(RestResp.fail(ErrorCodeEnum.FUCK)));
         } finally {
             // exit的时候也要带上对应参数，否则可能会有统计错误。
             if(entry != null) {

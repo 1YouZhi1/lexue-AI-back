@@ -5,6 +5,7 @@ import com.example.study.core.common.constant.ErrorCodeEnum;
 import com.example.study.core.common.resp.RestResp;
 import com.example.study.dao.entity.Comments;
 import com.example.study.dao.mapper.CommentsMapper;
+import com.example.study.dto.req.CommentGetReqDto;
 import com.example.study.dto.req.CommentsReqDto;
 import com.example.study.dto.resp.CommentsRespDto;
 import com.example.study.manager.cache.CommentsCacheManager;
@@ -30,10 +31,10 @@ public class CommentsServiceImpl implements CommentsService {
     private final CommentsMapper commentsMapper;
 
     @Override
-    public RestResp<List<CommentsRespDto>> getComments(Long post_id, Long type_id) {
-        if (type_id == 1) {
-            return RestResp.ok(commentsCacheManager.getComments(post_id));
-        } else if (type_id == 2) {
+    public RestResp<List<CommentsRespDto>> getComments(CommentGetReqDto commentGetReqDto) {
+        if (commentGetReqDto.getType_id() == 1) {
+            return RestResp.ok(commentsCacheManager.getComments(commentGetReqDto.getPost_id()));
+        } else if (commentGetReqDto.getType_id() == 2) {
             return null;
         }
         return null;
@@ -54,17 +55,17 @@ public class CommentsServiceImpl implements CommentsService {
                 comments.setUserId(UserHolder.getUserId());
                 comments.setLikes(0L);
                 commentsMapper.insert(comments);
+                commentsCacheManager.delComments(commentsReqDto.getPost_id());
+                RestResp.ok();
             }catch (Exception e) {
                 e.printStackTrace();
                 return RestResp.fail(ErrorCodeEnum.USER_COMMENT);
             }
-            RestResp.ok();
         }else {
             return null;
         }
 
 
-
-        return RestResp.ok();
+        return null;
     }
 }

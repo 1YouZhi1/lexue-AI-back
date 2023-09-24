@@ -90,6 +90,8 @@ public enum ErrorCodeEnum {
      */
     USER_REQ_MANY("A0501", "请求超出限制"),
 
+    FUCK("NMSL", "你在搞啥呢小子？？？"),
+
     /**
      * 用户评论异常
      */

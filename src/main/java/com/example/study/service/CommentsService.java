@@ -2,6 +2,7 @@ package com.example.study.service;
 
 import java.util.List;
 import com.example.study.core.common.resp.RestResp;
+import com.example.study.dto.req.CommentGetReqDto;
 import com.example.study.dto.req.CommentsReqDto;
 import com.example.study.dto.resp.CommentsRespDto;
 
@@ -16,11 +17,10 @@ public interface CommentsService {
     /**
      * sss
      * 获取评论
-     * @param post_id
-     * @param type_id
+     * @param commentGetReqDto
      * @return
      */
-    RestResp<List<CommentsRespDto>> getComments(Long post_id, Long type_id);
+    RestResp<List<CommentsRespDto>> getComments(CommentGetReqDto commentGetReqDto);
 
     /**
      * 新增评论
