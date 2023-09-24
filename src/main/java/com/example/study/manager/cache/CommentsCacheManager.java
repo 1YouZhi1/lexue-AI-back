@@ -59,6 +59,9 @@ public class CommentsCacheManager {
         return commentsRespDtoList;
     }
 
+
+
+
     @CacheEvict(cacheManager = CacheConsts.REDIS_CACHE_MANAGER, value =CacheConsts.COMMENTS_CACHE_MANAGER)
     public void delComments(Long p_id) {
 

@@ -78,6 +78,12 @@
             <version>3.4.2-1.4.1</version>
         </dependency>
 
+        <!--服务器相关-->
+        <dependency>
+            <groupId>com.github.oshi</groupId>
+            <artifactId>oshi-core</artifactId>
+            <version>6.1.6</version>
+        </dependency>
 
         <!-- Use Undertow instead -->
         <dependency>
@@ -263,6 +269,10 @@
             <artifactId>velocity-engine-core</artifactId>
             <version>2.3</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
         </dependency>
     </dependencies>
 

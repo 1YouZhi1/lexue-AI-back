@@ -37,4 +37,13 @@ public class SystemConfigConsts {
      */
     public static final String VIDEO_UPLOAD_DIRECTORY = "/video/";
 
+    /**
+     * http请求
+     */
+    public static final String HTTP = "http://";
+
+    /**
+     * https请求
+     */
+    public static final String HTTPS = "https://";
 }

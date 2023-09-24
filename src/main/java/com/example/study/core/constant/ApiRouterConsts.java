@@ -122,4 +122,14 @@ public class ApiRouterConsts {
      */
     public static final String API_FRONT_BUY_URL_PREFIX = API_FRONT_URL_PREFIX + RESOURCE_URL_PREFIX;
 
+    /**
+     * 后台模块 请求前缀
+     */
+    public static final String API_BACK_URL_PREFIX = API_URL_PREFIX + "/back";
+
+    /**
+     * 系统监控
+     */
+    public static final String API_BACK_SERVER_URL_PREFIX = API_BACK_URL_PREFIX + "/server";
+
 }

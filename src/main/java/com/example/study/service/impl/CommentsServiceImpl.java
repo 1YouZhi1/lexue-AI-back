@@ -34,10 +34,9 @@ public class CommentsServiceImpl implements CommentsService {
     public RestResp<List<CommentsRespDto>> getComments(CommentGetReqDto commentGetReqDto) {
         if (commentGetReqDto.getType_id() == 1) {
             return RestResp.ok(commentsCacheManager.getComments(commentGetReqDto.getPost_id()));
-        } else if (commentGetReqDto.getType_id() == 2) {
+        }else{
             return null;
         }
-        return null;
     }
 
 
