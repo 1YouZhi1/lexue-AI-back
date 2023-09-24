@@ -26,4 +26,8 @@ public interface QuestionsService {
      */
     RestResp<List<QuestionsRespDto>> getEveryDay();
 
+    /**
+     * 删除每日五题缓存
+     */
+    void delEveryDat();
 }

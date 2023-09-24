@@ -69,5 +69,10 @@ public class QuestionsServiceImpl implements QuestionsService {
         return RestResp.ok(questionsCacheManager.fiveQuestions());
     }
 
+    @Override
+    public void delEveryDat() {
+        questionsCacheManager.fiveQuestions();
+    }
+
 
 }

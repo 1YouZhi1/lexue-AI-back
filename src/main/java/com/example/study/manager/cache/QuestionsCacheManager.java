@@ -13,6 +13,7 @@ import com.example.study.dao.mapper.QuestionsMapper;
 import com.example.study.dto.resp.OptionsRespDto;
 import com.example.study.dto.resp.QuestionsRespDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
@@ -64,5 +65,10 @@ public class QuestionsCacheManager {
 
         System.out.println(questionsRespDtoList);
         return questionsRespDtoList;
+    }
+
+    @CacheEvict(cacheManager = CacheConsts.REDIS_CACHE_MANAGER, value = CacheConsts.QUESTIONS_INFO_CACHE_NAME)
+    public void delEveryDay() {
+
     }
 }
