@@ -8,6 +8,7 @@ import com.example.study.dao.entity.NewsInfo;
 import com.example.study.dao.mapper.NewsInfoMapper;
 import com.example.study.dto.resp.NewsInfoRespDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
@@ -41,5 +42,13 @@ public class NewsCacheManager {
                 .updateTime(v.getUpdateTime())
                 .image(v.getCategoryImage())
                 .build()).toList();
+    }
+
+    /**
+     * 删除缓存
+     */
+    @CacheEvict(cacheManager = CacheConsts.REDIS_CACHE_MANAGER, value = CacheConsts.LATEST_NEWS_CACHE_NAME)
+    public void delLastNews() {
+
     }
 }

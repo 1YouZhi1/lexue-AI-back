@@ -26,4 +26,9 @@ public interface NewsService {
      * @return 新闻信息
      */
     RestResp<NewsInfoRespDto> getNews(Long id);
+
+    /**
+     * 检查有没有新的新闻
+     */
+    void checkForNewNews();
 }
