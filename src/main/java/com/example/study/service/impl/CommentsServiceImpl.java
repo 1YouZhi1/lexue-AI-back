@@ -56,7 +56,7 @@ public class CommentsServiceImpl implements CommentsService {
                 comments.setLikes(0L);
                 commentsMapper.insert(comments);
                 commentsCacheManager.delComments(commentsReqDto.getPost_id());
-                RestResp.ok();
+                return RestResp.ok();
             }catch (Exception e) {
                 e.printStackTrace();
                 return RestResp.fail(ErrorCodeEnum.USER_COMMENT);
@@ -64,8 +64,5 @@ public class CommentsServiceImpl implements CommentsService {
         }else {
             return null;
         }
-
-
-        return null;
     }
 }

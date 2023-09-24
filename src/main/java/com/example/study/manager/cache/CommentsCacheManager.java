@@ -11,6 +11,7 @@ import com.example.study.dao.mapper.CommentsMapper;
 import com.example.study.dao.mapper.UserInfoMapper;
 import com.example.study.dto.resp.CommentsRespDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
@@ -58,7 +59,7 @@ public class CommentsCacheManager {
         return commentsRespDtoList;
     }
 
-    @Cacheable(cacheManager = CacheConsts.REDIS_CACHE_MANAGER, value =CacheConsts.COMMENTS_CACHE_MANAGER)
+    @CacheEvict(cacheManager = CacheConsts.REDIS_CACHE_MANAGER, value =CacheConsts.COMMENTS_CACHE_MANAGER)
     public void delComments(Long p_id) {
 
     }
