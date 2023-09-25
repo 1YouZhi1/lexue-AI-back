@@ -185,7 +185,7 @@ public class UserServiceImpl implements UserService {
         List<String> list = new ArrayList<>();
         list.add("admin");
         return RestResp.ok(AdminRespDto.builder()
-                .name(userInfo.getNickName())
+                .name("管理员")
                 .avatar(userInfo.getUserPhoto())
                 .introduction("AI学习")
                         .roles(list)
@@ -193,7 +193,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public RestResp<Page<UserInfo>> getList(int limit, int page) {
+    public RestResp<Page<UserInfo>> getList(int limit, int page, String title) {
         // 将参数转换为整数
         int pageSize = limit;
         int pageNum = page;
@@ -205,11 +205,22 @@ public class UserServiceImpl implements UserService {
         QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
         queryWrapper.select("*");
 
+        // 添加模糊查询条件
+        if (title != null && !title.isEmpty()) {
+            queryWrapper.like("nick_name", title);
+        }
+
         // 执行分页查询
         Page<UserInfo> userPage = userInfoMapper.selectPage(pageInfo, queryWrapper);
+        if (userPage.getRecords().size() < 1) {
+            Page<UserInfo> nulls = new Page<>();
+            return RestResp.ok(nulls);
+        }
+
 
         return RestResp.ok(userPage);
     }
+
 
     @Override
     public RestResp updateUser(UserInfo userInfo) {

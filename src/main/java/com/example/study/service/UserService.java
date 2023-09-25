@@ -69,7 +69,7 @@ public interface UserService {
      * @param page
      * @return
      */
-    RestResp<Page<UserInfo>> getList(int limit, int page);
+    RestResp<Page<UserInfo>> getList(int limit, int page, String title);
 
     /**
      * 更新用户数据

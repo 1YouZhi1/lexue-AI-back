@@ -37,10 +37,17 @@ public class ApiRouterConsts {
      */
     public static final String API_BACK_USER_URL_PREFIX = API_BACK_URL_PREFIX + "/user";
 
+
     /**
      * 首页新闻请求路径前缀
      */
     public static final String NEWS_URL_PREFIX = "/news";
+
+    /**
+     * 后台新闻前缀
+     */
+    public static final String API_BACK_NEWS_URL_PREFIX = API_BACK_URL_PREFIX + NEWS_URL_PREFIX;
+
 
     /**
      * 题目请求路径前缀

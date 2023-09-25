@@ -44,8 +44,8 @@ public class AdminController {
     }
 
     @GetMapping("/list")
-    public RestResp<Page<UserInfo>> getList(@RequestParam("limit") int limit, @RequestParam("page") int page) {
-        return userService.getList(limit,page);
+    public RestResp<Page<UserInfo>> getList(@RequestParam("limit") int limit, @RequestParam("page") int page, @RequestParam("title") String title) {
+        return userService.getList(limit,page, title);
     }
 
     @PutMapping
