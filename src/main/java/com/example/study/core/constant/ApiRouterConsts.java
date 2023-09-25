@@ -28,6 +28,16 @@ public class ApiRouterConsts {
     public static final String API_FRONT_URL_PREFIX = API_URL_PREFIX + "/front";
 
     /**
+     * 后台模块 请求前缀
+     */
+    public static final String API_BACK_URL_PREFIX = API_URL_PREFIX + "/back";
+
+    /**
+     * 后台用户
+     */
+    public static final String API_BACK_USER_URL_PREFIX = API_BACK_URL_PREFIX + "/user";
+
+    /**
      * 首页新闻请求路径前缀
      */
     public static final String NEWS_URL_PREFIX = "/news";
@@ -121,11 +131,6 @@ public class ApiRouterConsts {
      * 付费资源
      */
     public static final String API_FRONT_BUY_URL_PREFIX = API_FRONT_URL_PREFIX + RESOURCE_URL_PREFIX;
-
-    /**
-     * 后台模块 请求前缀
-     */
-    public static final String API_BACK_URL_PREFIX = API_URL_PREFIX + "/back";
 
     /**
      * 系统监控

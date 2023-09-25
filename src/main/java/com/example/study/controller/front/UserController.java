@@ -7,6 +7,7 @@ import com.example.study.core.constant.ApiRouterConsts;
 import com.example.study.dto.req.UserLoginReqDto;
 import com.example.study.dto.req.UserRegisterReqDto;
 import com.example.study.dto.req.UserUpDataReqDto;
+import com.example.study.dto.resp.AdminRespDto;
 import com.example.study.dto.resp.UserInfoRespDto;
 import com.example.study.dto.resp.UserLoginRespDto;
 import com.example.study.dto.resp.UserRegisterRespDto;
@@ -50,6 +51,7 @@ public class UserController {
     public RestResp upDataUserInfo(@RequestBody UserUpDataReqDto dto){
         return userService.upDataUserInfo(dto);
     }
+
 
 
 }
