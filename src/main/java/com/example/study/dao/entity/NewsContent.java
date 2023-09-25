@@ -3,6 +3,9 @@ package com.example.study.dao.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Builder;
+import lombok.Data;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -15,6 +18,7 @@ import java.time.LocalDateTime;
  * @date 2023/09/12
  */
 @TableName("news_content")
+@Data
 public class NewsContent implements Serializable {
 
 private static final long serialVersionUID = 1L;
@@ -85,8 +89,13 @@ private static final long serialVersionUID = 1L;
         public void setUpdateTime(LocalDateTime updateTime) {
             this.updateTime = updateTime;
             }
-    
-@Override
+
+    public NewsContent() {
+    }
+
+
+
+    @Override
 public String toString() {
         return "NewsContent{" +
                 "id=" + id +

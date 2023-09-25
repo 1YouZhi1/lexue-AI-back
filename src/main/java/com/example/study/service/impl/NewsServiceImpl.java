@@ -99,8 +99,7 @@ public class NewsServiceImpl implements NewsService {
 
         for (NewsInfo newsInfo : newsInfos) {
             QueryWrapper<NewsContent> queryWrapper1 = new QueryWrapper<>();
-            queryWrapper1.select("*")
-                    .eq("new_id", newsInfo.getId());
+            queryWrapper1.eq("news_id", newsInfo.getId());
             NewsContent newsContent = newsContentMapper.selectOne(queryWrapper1);
 
             newsInfoRespDtos.add(NewsInfoRespDto.builder()
@@ -120,6 +119,16 @@ public class NewsServiceImpl implements NewsService {
         resultPage.setRecords(newsInfoRespDtos);
 
         return RestResp.ok(resultPage);
+    }
+
+    @Override
+    public RestResp updateNews(NewsInfoRespDto newsInfoRespDto) {
+        newsInfoMapper.updateById(NewsInfo.builder()
+                .id(newsInfoRespDto.getId())
+                .title(newsInfoRespDto.getTitle())
+                .categoryImage(newsInfoRespDto.getImage())
+                .build());
+        return RestResp.ok();
     }
 
 }

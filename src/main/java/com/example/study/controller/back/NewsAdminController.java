@@ -31,4 +31,9 @@ public class NewsAdminController {
         return newsService.getAllNews(limit, page, title);
     }
 
+    @PutMapping
+    public RestResp updateNews(@RequestBody NewsInfoRespDto newsInfoRespDto) {
+        return newsService.updateNews(newsInfoRespDto);
+    }
+
 }

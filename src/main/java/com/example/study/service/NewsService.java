@@ -42,4 +42,11 @@ public interface NewsService {
      * @return
      */
     RestResp<Page<NewsInfoRespDto>> getAllNews(int limit,int page, String title);
+
+    /**
+     * 更新新闻数据
+     * @param newsInfoRespDto
+     * @return
+     */
+    RestResp updateNews(NewsInfoRespDto newsInfoRespDto);
 }
