@@ -35,4 +35,11 @@ public interface PostsService {
      * @return
      */
     RestResp insertPost(PostsReqDto dto);
+
+    /**
+     * 模糊搜索
+     * @param search
+     * @return
+     */
+    RestResp<List<PostsRespDto>> searchPosts(String search);
 }

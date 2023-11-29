@@ -73,5 +73,28 @@ public class QuestionsServiceImpl implements QuestionsService {
         questionsCacheManager.fiveQuestions();
     }
 
+    @Override
+    public RestResp<List<QuestionsRespDto>> getList() {
+        List<Questions> questions = questionsMapper.selectList(null);
+        List<QuestionsRespDto> questionsRespDtoList = new ArrayList<>();
+        for (Questions question : questions) {
+
+            // 获取题目对应的选项
+            QueryWrapper<Options> optionsQueryWrapper = new QueryWrapper<>();
+            optionsQueryWrapper.eq("question_id", question.getQuestionId());
+            List<Options> optionsList = optionsMapper.selectList(optionsQueryWrapper);
+
+            List<OptionsRespDto> optionsRespDtoList = new ArrayList<>();
+            for (Options option : optionsList) {
+                OptionsRespDto optionsRespDto = new OptionsRespDto(option.getOptionId(),option.getOptionText(),option.getIsCorrect());
+                optionsRespDtoList.add(optionsRespDto);
+            }
+            QuestionsRespDto questionsRespDto = new QuestionsRespDto(question.getQuestionId(), question.getName(),question.getType(),optionsRespDtoList);
+            questionsRespDtoList.add(questionsRespDto);
+        }
+
+        return RestResp.ok(questionsRespDtoList);
+    }
+
 
 }

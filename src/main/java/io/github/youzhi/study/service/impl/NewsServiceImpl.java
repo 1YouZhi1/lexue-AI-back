@@ -129,4 +129,23 @@ public class NewsServiceImpl implements NewsService {
         return RestResp.ok();
     }
 
+    @Override
+    public RestResp<List<NewsInfoRespDto>> search(String search) {
+        QueryWrapper<NewsInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("title", search);
+        List<NewsInfo> newsInfos = newsInfoMapper.selectList(queryWrapper);
+        List<NewsInfoRespDto> list = new ArrayList<>();
+        for(NewsInfo newsInfo : newsInfos){
+            list.add(NewsInfoRespDto.builder()
+                    .id(newsInfo.getId())
+                    .categoryId(newsInfo.getCategoryId())
+                    .categoryName(newsInfo.getCategoryName())
+                    .sourceName(newsInfo.getSourceName())
+                    .title(newsInfo.getTitle())
+                    .updateTime(newsInfo.getUpdateTime())
+                    .build());
+        }
+        return RestResp.ok(list);
+    }
+
 }

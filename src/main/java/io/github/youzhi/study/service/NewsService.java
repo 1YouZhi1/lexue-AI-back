@@ -48,4 +48,11 @@ public interface NewsService {
      * @return
      */
     RestResp updateNews(NewsInfoRespDto newsInfoRespDto);
+
+    /**
+     * 模糊搜索新闻
+     * @param search
+     * @return
+     */
+    RestResp<List<NewsInfoRespDto>> search(String search);
 }

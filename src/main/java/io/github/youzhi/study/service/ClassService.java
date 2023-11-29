@@ -3,6 +3,8 @@ package io.github.youzhi.study.service;
 import java.util.List;
 
 import io.github.youzhi.study.core.common.resp.RestResp;
+import io.github.youzhi.study.core.common.resp.TreeNode;
+import io.github.youzhi.study.dao.entity.ClassType;
 import io.github.youzhi.study.dto.resp.ClassInfoRespDto;
 import io.github.youzhi.study.dto.resp.ClassTypeInfoRespDto;
 import io.github.youzhi.study.dto.resp.ClassTypeRespDto;
@@ -49,4 +51,28 @@ public interface ClassService {
      */
     RestResp<List<ClassTypeInfoRespDto>> getLoveClass();
 
+
+    /**
+     * 模糊搜索
+     * @return
+     */
+    RestResp<List<ClassTypeInfoRespDto>> searchClass(String search);
+
+    /**
+     * 树结构返回
+     * @return
+     */
+    RestResp<List<TreeNode>> selectTree();
+
+    /**
+     * 全部type
+     * @return
+     */
+    RestResp<List<ClassType>> getTypeAll();
+
+    /**
+     * 新增
+     * @return
+     */
+    RestResp<Void> insert(ClassType classType);
 }

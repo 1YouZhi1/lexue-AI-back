@@ -3,10 +3,13 @@ package io.github.youzhi.study.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.github.youzhi.study.core.auth.UserHolder;
 import io.github.youzhi.study.core.common.resp.RestResp;
+import io.github.youzhi.study.core.common.resp.TreeNode;
 import io.github.youzhi.study.dao.entity.ClassInfo;
 import io.github.youzhi.study.dao.entity.ClassLove;
+import io.github.youzhi.study.dao.entity.ClassType;
 import io.github.youzhi.study.dao.mapper.ClassInfoMapper;
 import io.github.youzhi.study.dao.mapper.ClassLoveMapper;
+import io.github.youzhi.study.dao.mapper.ClassTypeMapper;
 import io.github.youzhi.study.dto.resp.ClassInfoRespDto;
 import io.github.youzhi.study.dto.resp.ClassTypeInfoRespDto;
 import io.github.youzhi.study.dto.resp.ClassTypeRespDto;
@@ -16,7 +19,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 课程 实现类
@@ -29,6 +34,8 @@ import java.util.List;
 public class ClassServiceImpl implements ClassService {
 
     private final ClassTypeCacheManager classTypeCacheManager;
+
+    private final ClassTypeMapper classTypeMapper;
 
     private final ClassInfoMapper classInfoMapper;
 
@@ -106,5 +113,65 @@ public class ClassServiceImpl implements ClassService {
         return RestResp.ok(classTypeInfoRespDto);
     }
 
+    @Override
+    public RestResp<List<ClassTypeInfoRespDto>> searchClass(String search) {
+        QueryWrapper<ClassInfo> queryWrapper = new QueryWrapper<>();
+        System.out.println(search);
+        queryWrapper.select("id, title, imgUrl").like("title", search);
+        List<ClassInfo> classInfos = classInfoMapper.selectList(queryWrapper);
+        List<ClassTypeInfoRespDto> list = new ArrayList<>();
+        for(ClassInfo classInfo : classInfos) {
+            list.add(ClassTypeInfoRespDto.builder()
+                    .c_id(classInfo.getId())
+                    .title(classInfo.getTitle())
+                    .imageUrl(classInfo.getImgUrl())
+                    .build());
+        }
+        return RestResp.ok(list);
+    }
+
+    @Override
+    public RestResp<List<TreeNode>> selectTree() {
+        List<ClassType> classTypes = classTypeMapper.selectList(null);
+        List<TreeNode> treeNodes = buildTree(classTypes);
+        return RestResp.ok(treeNodes);
+    }
+
+    @Override
+    public RestResp<List<ClassType>> getTypeAll() {
+        List<ClassType> classTypes = classTypeMapper.selectList(null);
+        return RestResp.ok(classTypes);
+    }
+
+    @Override
+    public RestResp<Void> insert(ClassType classType) {
+        System.out.println(classType.toString());
+        classTypeMapper.insert(classType);
+        return RestResp.ok();
+    }
+
+    public List<TreeNode> buildTree(List<ClassType> categories) {
+        Map<Long, TreeNode> mapping = new HashMap<>();
+        for (ClassType category : categories) {
+            TreeNode node = new TreeNode();
+            node.setId(category.getId());
+            node.setLabel(category.getClassName());
+            mapping.put(category.getId(), node);
+        }
+
+        List<TreeNode> roots = new ArrayList<>();
+        for (ClassType category : categories) {
+            TreeNode node = mapping.get(category.getId());
+            if (category.getFatherId() == null) {
+                roots.add(node);
+            } else {
+                TreeNode parentNode = mapping.get(category.getFatherId());
+                if (parentNode != null) {
+                    parentNode.getChildren().add(node);
+                }
+            }
+        }
+        return roots;
+    }
 
 }

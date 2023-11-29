@@ -47,4 +47,9 @@ public class ClassController {
     public RestResp<List<ClassTypeInfoRespDto>> getLoveClass() {
         return classService.getLoveClass();
     }
+
+    @GetMapping("search")
+    public RestResp<List<ClassTypeInfoRespDto>> searchClass(String search) {
+        return classService.searchClass(search);
+    }
 }

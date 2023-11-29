@@ -44,16 +44,29 @@ public class ApiRouterConsts {
     public static final String NEWS_URL_PREFIX = "/news";
 
     /**
+     * 课程请求前缀
+     */
+    public static final String CLASS_URL_PREFIX = "/class";
+
+    /**
      * 后台新闻前缀
      */
     public static final String API_BACK_NEWS_URL_PREFIX = API_BACK_URL_PREFIX + NEWS_URL_PREFIX;
 
+    /**
+     * 后台课程前缀
+     */
+    public static final String API_BACK_CLASS_URL_PREFIX = API_BACK_URL_PREFIX + CLASS_URL_PREFIX;
 
     /**
      * 题目请求路径前缀
      */
     public static final String QUESTIONS_URL_PREFIX = "/questions";
 
+    /**
+     * 题目后台请求路径前缀
+     */
+    public static final String API_BACK_QUESTIONS_URL_PREFIX = API_BACK_URL_PREFIX + QUESTIONS_URL_PREFIX;
     /**
      * 帖子请求路径前缀
      */
@@ -74,10 +87,7 @@ public class ApiRouterConsts {
      */
     public static final String NOTICE_URL_PREFIX = "/notice";
 
-    /**
-     * 课程请求前缀
-     */
-    public static final String CLASS_URL_PREFIX = "/class";
+
 
     /**
      * 前台课程请求路径前缀

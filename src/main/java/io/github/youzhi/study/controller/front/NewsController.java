@@ -40,4 +40,8 @@ public class NewsController {
         return newsService.getNews(id);
     }
 
+    @GetMapping("search")
+    public RestResp<List<NewsInfoRespDto>> search(String search) {
+        return newsService.search(search);
+    }
 }

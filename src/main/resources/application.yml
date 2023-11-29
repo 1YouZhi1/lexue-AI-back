@@ -242,6 +242,7 @@ study:
     allow-origins:
       - http://192.168.31.214:8080
       - http://localhost:3307
+      - http://localhost:9528
       - http://localhost:8080
   # JWT??
   jwt:

@@ -34,8 +34,15 @@ public class PostsController {
         return postsService.getPostInfo(id);
     }
 
-    @PostMapping
+    @PostMapping("/insert")
     public RestResp insertPost(@RequestBody PostsReqDto dto) {
         return postsService.insertPost(dto);
     }
+
+    @GetMapping("/search")
+    public RestResp<List<PostsRespDto>> searchPosts(String search) {
+        return postsService.searchPosts(search);
+
+    }
+
 }

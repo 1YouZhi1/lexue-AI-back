@@ -146,4 +146,37 @@ public class PostsServiceImpl implements PostsService {
 
         return RestResp.ok();
     }
+
+    @Override
+    public RestResp<List<PostsRespDto>> searchPosts(String search) {
+        QueryWrapper<Posts> queryWrapper = new QueryWrapper<>();
+        queryWrapper.select("*")
+                .like("title", search)
+                .orderByAsc("RAND()");
+
+        //随机获取指定数量的帖子
+        List<Posts> randomPosts = postsMapper.selectList(queryWrapper);
+
+        List<PostsRespDto> postsRespDtoList = new ArrayList<>();
+
+        for (Posts posts: randomPosts) {
+            QueryWrapper<PostsImage> imageWrapper = new QueryWrapper();
+            imageWrapper.select("image_url")
+                    .eq("p_id", posts.getPostId())
+                    .orderByDesc("sort")
+                    .last(DatabaseConsts.SqlEnum.LIMIT_1.getSql());
+            PostsImage postsImage = postsImageMapper.selectOne(imageWrapper);
+            if (postsImage != null) {
+                postsRespDtoList.add(PostsRespDto.builder()
+                        .p_id(posts.getPostId())
+                        .title(posts.getTitle())
+                        .imageUrl(postsImage.getImageUrl())
+                        .likes(posts.getLikes())
+                        .comments(posts.getComments())
+                        .build());
+            }
+
+        }
+        return RestResp.ok(postsRespDtoList);
+    }
 }

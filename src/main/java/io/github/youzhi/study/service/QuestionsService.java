@@ -30,4 +30,10 @@ public interface QuestionsService {
      * 删除每日五题缓存
      */
     void delEveryDat();
+
+    /**
+     * 获取列表
+     * @return
+     */
+    RestResp<List<QuestionsRespDto>> getList();
 }
